@@ -1,0 +1,1601 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DA5E96C3-2ACB-427C-A5B9-BAC6E656FFBB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TransitCamp</RootNamespace>
+    <AssemblyName>TransitCamp</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44351</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.14.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.14.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.2.6\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.2.6\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.0\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.3.1.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.3.1.1\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.23.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.EntityFramework.8.0.23\lib\net452\MySql.Data.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MySqlBackup, Version=2.3.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlBackup.NET.2.3.4\lib\net452\MySqlBackup.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2020.0.1.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2020.0.1\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data.Common, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.Common.4.3.0\lib\net451\System.Data.Common.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.7\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.7\lib\net45\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.23\lib\net452\Zstandard.Net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Bookings\AddBillAttribute.aspx" />
+    <Content Include="Bookings\AddBlock.aspx" />
+    <Content Include="Bookings\AddBooking.aspx" />
+    <Content Include="Bookings\AddRoom.aspx" />
+    <Content Include="Bookings\BillAttributeList.aspx" />
+    <Content Include="Bookings\BlockList.aspx" />
+    <Content Include="Bookings\BookingList.aspx" />
+    <Content Include="Bookings\RoomList.aspx" />
+    <Content Include="Reports\ADDateRange.aspx" />
+    <Content Include="Reports\ADFormationWiseSummary.aspx" />
+    <Content Include="Admin\AddADType.aspx" />
+    <Content Include="Admin\AddAirline.aspx" />
+    <Content Include="Admin\AddCamp.aspx" />
+    <Content Include="Admin\AddCategory.aspx" />
+    <Content Include="Admin\AddCharterDetails.aspx" />
+    <Content Include="Admin\AddCity.aspx" />
+    <Content Include="Admin\AddDivision.aspx" />
+    <Content Include="Admin\AddHeadquarter.aspx" />
+    <Content Include="Admin\AddLeave.aspx" />
+    <Content Include="Admin\AddLevel.aspx" />
+    <Content Include="Admin\AddMedicalStatus.aspx" />
+    <Content Include="Admin\AddMove.aspx" />
+    <Content Include="Admin\AddOutLogic.aspx" />
+    <Content Include="Admin\AddPriority.aspx" />
+    <Content Include="Admin\AddPriorityStatus.aspx" />
+    <Content Include="Admin\AddRank.aspx" />
+    <Content Include="Admin\AddSignature.aspx" />
+    <Content Include="Admin\AddTransport.aspx" />
+    <Content Include="Admin\AddUnit.aspx" />
+    <Content Include="Admin\ADEntery.aspx" />
+    <Content Include="Admin\ADIsLoadList.aspx" />
+    <Content Include="Admin\ADLeaveEntry.aspx" />
+    <Content Include="Admin\ADLeaveList.aspx" />
+    <Content Include="Admin\ADList.aspx" />
+    <Content Include="Admin\ADListOnTempHold.aspx" />
+    <Content Include="Admin\ADListPriorityWise.aspx" />
+    <Content Include="Admin\ADListReserve.aspx" />
+    <Content Include="Admin\ADOnHoldStatusList.aspx" />
+    <Content Include="Admin\ADTDEntry.aspx" />
+    <Content Include="Admin\ADTDList.aspx" />
+    <Content Include="Admin\ADTypeList.aspx" />
+    <Content Include="Admin\AirlineList.aspx" />
+    <Content Include="Admin\AllManifests.aspx" />
+    <Content Include="Admin\AllReserveManifests.aspx" />
+    <Content Include="Admin\CampList.aspx" />
+    <Content Include="Admin\CategoryList.aspx" />
+    <Content Include="Admin\CharterADEntery.aspx" />
+    <Content Include="Admin\CharterADList.aspx" />
+    <Content Include="Admin\CharterDetailsList.aspx" />
+    <Content Include="Admin\CitiesList.aspx" />
+    <Content Include="Admin\DivisionList.aspx" />
+    <Content Include="Admin\FamilyEntry.aspx" />
+    <Content Include="Admin\FamilyList.aspx" />
+    <Content Include="Admin\HeadquarterList.aspx" />
+    <Content Include="Admin\LeaveList.aspx" />
+    <Content Include="Admin\LevelList.aspx" />
+    <Content Include="Admin\Manifest.aspx" />
+    <Content Include="Admin\ManifestList.aspx" />
+    <Content Include="Admin\MedicalStatusList.aspx" />
+    <Content Include="Admin\MoveList.aspx" />
+    <Content Include="Admin\OutLogicList.aspx" />
+    <Content Include="Admin\PriorityList.aspx" />
+    <Content Include="Admin\PriorityStatusList.aspx" />
+    <Content Include="Admin\RankList.aspx" />
+    <Content Include="Admin\ReserveManifestDetails.aspx" />
+    <Content Include="Admin\SignatureList.aspx" />
+    <Content Include="Admin\TransferCourierToCharter.aspx" />
+    <Content Include="Admin\TransferCourierToCharterList.aspx" />
+    <Content Include="Admin\TransportDetailList.aspx" />
+    <Content Include="Admin\TransportDetails.aspx" />
+    <Content Include="Admin\TransportList.aspx" />
+    <Content Include="Admin\UnitList.aspx" />
+    <Content Include="Admin\UserHistory.aspx" />
+    <Content Include="Admin\UserHistoryDetails.aspx" />
+    <Content Include="Admin\UserList.aspx" />
+    <Content Include="Content\css\all.min.css" />
+    <Content Include="Content\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\css\bootstrap-grid.min.css" />
+    <Content Include="Content\css\bootstrap-utilities.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\chosen.min.css" />
+    <Content Include="Content\css\datepicker-bs4.min.css" />
+    <Content Include="Content\css\datepicker-bulma.min.css" />
+    <Content Include="Content\css\datepicker-foundation.min.css" />
+    <Content Include="Content\css\datepicker.min.css" />
+    <Content Include="Content\css\jarallax.css" />
+    <Content Include="Content\css\jquery-ui.css" />
+    <Content Include="Content\css\notyf.min.css" />
+    <Content Include="Content\css\nouislider.min.css" />
+    <Content Include="Content\css\Print.css" />
+    <Content Include="Content\css\regular.min.css" />
+    <Content Include="Content\css\simplebar.min.css" />
+    <Content Include="Content\css\solid.min.css" />
+    <Content Include="Content\css\svg-with-js.min.css" />
+    <Content Include="Content\css\v4-shims.min.css" />
+    <Content Include="Content\css\volt.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\images\brand\dark.svg" />
+    <Content Include="Content\images\brand\Logo.png" />
+    <Content Include="Content\images\brand\light.svg" />
+    <Content Include="Content\images\favicon\android-chrome-192x192.png" />
+    <Content Include="Content\images\favicon\android-chrome-512x512.png" />
+    <Content Include="Content\images\favicon\apple-touch-icon.png" />
+    <Content Include="Content\images\favicon\browserconfig.xml" />
+    <Content Include="Content\images\favicon\favicon-16x16.png" />
+    <Content Include="Content\images\favicon\favicon-32x32.png" />
+    <Content Include="Content\images\favicon\favicon.ico" />
+    <Content Include="Content\images\favicon\mstile-150x150.png" />
+    <Content Include="Content\images\favicon\safari-pinned-tab.svg" />
+    <Content Include="Content\images\IndianArmylogo.png" />
+    <Content Include="Content\images\IndianFlag.png" />
+    <Content Include="Content\images\ui-icons_444444_256x240.png" />
+    <Content Include="Content\images\ui-icons_555555_256x240.png" />
+    <Content Include="Content\images\ui-icons_777620_256x240.png" />
+    <Content Include="Content\images\ui-icons_777777_256x240.png" />
+    <Content Include="Content\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Content\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\js\bootstrap-datetimepicker.js" />
+    <Content Include="Content\js\bootstrap.bundle.min.js" />
+    <Content Include="Content\js\bootstrap.esm.min.js" />
+    <Content Include="Content\js\chosen.jquery.min.js" />
+    <Content Include="Content\js\datepicker-full.min.js" />
+    <Content Include="Content\js\jarallax-element.min.js" />
+    <Content Include="Content\js\jarallax-video.min.js" />
+    <Content Include="Content\js\jquery-3.5.1.min.js" />
+    <Content Include="Content\js\jquery-ui.js" />
+    <Content Include="Content\js\moment2.15.1.js" />
+    <Content Include="Content\js\notyf.es.js" />
+    <Content Include="Content\js\notyf.umd.js" />
+    <Content Include="Content\js\on-screen.es6.js" />
+    <Content Include="Content\js\popperjs.js" />
+    <Content Include="Content\js\simplebar.esm.js" />
+    <Content Include="Content\js\slim.min.js" />
+    <Content Include="Content\js\smooth-scroll.min.js" />
+    <Content Include="Content\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\images\flags\aland-islands.svg" />
+    <Content Include="Content\images\flags\albania.svg" />
+    <Content Include="Content\images\flags\algeria.svg" />
+    <Content Include="Content\images\flags\american-samoa.svg" />
+    <Content Include="Content\images\flags\anguilla.svg" />
+    <Content Include="Content\images\flags\argentina.svg" />
+    <Content Include="Content\images\flags\armenia.svg" />
+    <Content Include="Content\images\flags\australia.svg" />
+    <Content Include="Content\images\flags\austria.svg" />
+    <Content Include="Content\images\flags\azerbaijan.svg" />
+    <Content Include="Content\images\flags\bahrain.svg" />
+    <Content Include="Content\images\flags\belarus.svg" />
+    <Content Include="Content\images\flags\belgium.svg" />
+    <Content Include="Content\images\flags\bolivia.svg" />
+    <Content Include="Content\images\flags\bosnia-and-herzegovina.svg" />
+    <Content Include="Content\images\flags\botswana.svg" />
+    <Content Include="Content\images\flags\brazil.svg" />
+    <Content Include="Content\images\flags\bulgaria.svg" />
+    <Content Include="Content\images\flags\cambodia.svg" />
+    <Content Include="Content\images\flags\cameroon.svg" />
+    <Content Include="Content\images\flags\canada.svg" />
+    <Content Include="Content\images\flags\chile.svg" />
+    <Content Include="Content\images\flags\china.svg" />
+    <Content Include="Content\images\flags\colombia.svg" />
+    <Content Include="Content\images\flags\costa-rica.svg" />
+    <Content Include="Content\images\flags\croatia.svg" />
+    <Content Include="Content\images\flags\cuba.svg" />
+    <Content Include="Content\images\flags\cyprus.svg" />
+    <Content Include="Content\images\flags\czech-republic.svg" />
+    <Content Include="Content\images\flags\denmark.svg" />
+    <Content Include="Content\images\flags\ecuador.svg" />
+    <Content Include="Content\images\flags\egypt.svg" />
+    <Content Include="Content\images\flags\estonia.svg" />
+    <Content Include="Content\images\flags\ethiopia.svg" />
+    <Content Include="Content\images\flags\finland.svg" />
+    <Content Include="Content\images\flags\france.svg" />
+    <Content Include="Content\images\flags\georgia.svg" />
+    <Content Include="Content\images\flags\germany.svg" />
+    <Content Include="Content\images\flags\greece.svg" />
+    <Content Include="Content\images\flags\haiti.svg" />
+    <Content Include="Content\images\flags\hong-kong.svg" />
+    <Content Include="Content\images\flags\hungary.svg" />
+    <Content Include="Content\images\flags\iceland.svg" />
+    <Content Include="Content\images\flags\india.svg" />
+    <Content Include="Content\images\flags\indonesia.svg" />
+    <Content Include="Content\images\flags\iran.svg" />
+    <Content Include="Content\images\flags\iraq.svg" />
+    <Content Include="Content\images\flags\ireland.svg" />
+    <Content Include="Content\images\flags\israel.svg" />
+    <Content Include="Content\images\flags\italy.svg" />
+    <Content Include="Content\images\flags\ivory-coast.svg" />
+    <Content Include="Content\images\flags\japan.svg" />
+    <Content Include="Content\images\flags\kazakhstan.svg" />
+    <Content Include="Content\images\flags\kuwait.svg" />
+    <Content Include="Content\images\flags\latvia.svg" />
+    <Content Include="Content\images\flags\liechtenstein.svg" />
+    <Content Include="Content\images\flags\lithuania.svg" />
+    <Content Include="Content\images\flags\luxembourg.svg" />
+    <Content Include="Content\images\flags\malaysia.svg" />
+    <Content Include="Content\images\flags\mexico.svg" />
+    <Content Include="Content\images\flags\mongolia.svg" />
+    <Content Include="Content\images\flags\montenegro.svg" />
+    <Content Include="Content\images\flags\nauru.svg" />
+    <Content Include="Content\images\flags\netherlands.svg" />
+    <Content Include="Content\images\flags\nicaragua.svg" />
+    <Content Include="Content\images\flags\nigeria.svg" />
+    <Content Include="Content\images\flags\norway.svg" />
+    <Content Include="Content\images\flags\pakistan.svg" />
+    <Content Include="Content\images\flags\panama.svg" />
+    <Content Include="Content\images\flags\paraguay.svg" />
+    <Content Include="Content\images\flags\peru.svg" />
+    <Content Include="Content\images\flags\philippines.svg" />
+    <Content Include="Content\images\flags\portugal.svg" />
+    <Content Include="Content\images\flags\puerto-rico.svg" />
+    <Content Include="Content\images\flags\republic-of-macedonia.svg" />
+    <Content Include="Content\images\flags\republic-of-poland.svg" />
+    <Content Include="Content\images\flags\romania.svg" />
+    <Content Include="Content\images\flags\russia.svg" />
+    <Content Include="Content\images\flags\serbia.svg" />
+    <Content Include="Content\images\flags\singapore.svg" />
+    <Content Include="Content\images\flags\slovakia.svg" />
+    <Content Include="Content\images\flags\slovenia.svg" />
+    <Content Include="Content\images\flags\south-africa.svg" />
+    <Content Include="Content\images\flags\south-korea.svg" />
+    <Content Include="Content\images\flags\spain.svg" />
+    <Content Include="Content\images\flags\sri-lanka.svg" />
+    <Content Include="Content\images\flags\sweden.svg" />
+    <Content Include="Content\images\flags\switzerland.svg" />
+    <Content Include="Content\images\flags\taiwan.svg" />
+    <Content Include="Content\images\flags\thailand.svg" />
+    <Content Include="Content\images\flags\tunisia.svg" />
+    <Content Include="Content\images\flags\turkey.svg" />
+    <Content Include="Content\images\flags\ukraine.svg" />
+    <Content Include="Content\images\flags\united-arab-emirates.svg" />
+    <Content Include="Content\images\flags\united-kingdom.svg" />
+    <Content Include="Content\images\flags\united-states-of-america.svg" />
+    <Content Include="Content\images\flags\united-states.svg" />
+    <Content Include="Content\images\flags\uruguay.svg" />
+    <Content Include="Content\images\flags\venezuela.svg" />
+    <Content Include="Content\images\flags\vietnam.svg" />
+    <Content Include="Content\images\illustrations\404.svg" />
+    <Content Include="Content\images\illustrations\500.svg" />
+    <Content Include="Content\images\illustrations\bs5-illustrations.svg" />
+    <Content Include="Content\images\illustrations\signin.svg" />
+    <Content Include="Content\images\mockup-presentation.png" />
+    <Content Include="Content\images\paypal-logo.svg" />
+    <Content Include="Content\images\profile-cover.jpg" />
+    <Content Include="Content\images\themesberg.svg" />
+    <Content Include="Content\js\all.min.js" />
+    <Content Include="Content\js\bootstrap.min.js" />
+    <Content Include="Content\js\brands.min.js" />
+    <Content Include="Content\js\conflict-detection.min.js" />
+    <Content Include="Content\js\countUp.umd.js" />
+    <Content Include="Content\js\datepicker.min.js" />
+    <Content Include="Content\css\fontawesome.min.css" />
+    <Content Include="Content\js\fontawesome.min.js" />
+    <Content Include="Content\js\jarallax.min.js" />
+    <Content Include="Content\js\notyf.min.js" />
+    <Content Include="Content\js\nouislider.min.js" />
+    <Content Include="Content\js\on-screen.umd.min.js" />
+    <Content Include="Content\js\popper.min.js" />
+    <Content Include="Content\js\regular.min.js" />
+    <Content Include="Content\js\simplebar.min.js" />
+    <Content Include="Content\js\smooth-scroll.polyfills.min.js" />
+    <Content Include="Content\js\solid.min.js" />
+    <Content Include="Content\js\v4-shims.min.js" />
+    <Content Include="Content\js\volt.js" />
+    <Content Include="CreateAccount.aspx" />
+    <Content Include="Dashboard.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="ManifestDetails.aspx" />
+    <Content Include="Reports\ADReportDateWise.aspx" />
+    <Content Include="Reports\ADReportMoveTypeDateWise.aspx" />
+    <Content Include="Reports\ADReportToday.aspx" />
+    <Content Include="Reports\ADReportMoveType.aspx" />
+    <Content Include="Reports\ADUnitWiseDateRange.aspx" />
+    <Content Include="Reports\ArrivalCityDateWise.aspx" />
+    <Content Include="Reports\ArrivalUnitWiseSummary.aspx" />
+    <Content Include="Reports\ArrivalUnitWiseSummaryDateRange.aspx" />
+    <Content Include="Reports\CancellationReport.aspx" />
+    <Content Include="Reports\CancellationReportDateWise.aspx" />
+    <Content Include="Reports\CityDateWise.aspx" />
+    <Content Include="Reports\DeepartureDivisionReport.aspx" />
+    <Content Include="Reports\DeepartureDivisionReportDateWise.aspx" />
+    <Content Include="Reports\DepartureCityWise.aspx" />
+    <Content Include="Reports\DepartureCityWiseDateWise.aspx" />
+    <Content Include="Reports\DepartureDateWise.aspx" />
+    <Content Include="Reports\DepartureDateWiseDaily.aspx" />
+    <Content Include="Reports\DepartureHQWise.aspx" />
+    <Content Include="Reports\DepartureHQWiseDateWise.aspx" />
+    <Content Include="Reports\DepartureMoveType.aspx" />
+    <Content Include="Reports\DepartureMoveTypeDateWise.aspx" />
+    <Content Include="Reports\DepartureTransportWise.aspx" />
+    <Content Include="Reports\DepartureTransportWiseDateWise.aspx" />
+    <Content Include="Reports\DepartureUnitWiseReport.aspx" />
+    <Content Include="Reports\DepartureUnitWiseReportDateWise.aspx" />
+    <Content Include="Reports\DepartureUnitWiseSummary.aspx" />
+    <Content Include="Reports\DepartureUnitWiseSummaryDateRange.aspx" />
+    <Content Include="Reports\DivisonWiseReport.aspx" />
+    <Content Include="Reports\DivisonWiseReportDateWise.aspx" />
+    <Content Include="Reports\FlyReport.aspx" />
+    <Content Include="Reports\FlyReportDateWise.aspx" />
+    <Content Include="Reports\FormationWiseSummary.aspx" />
+    <Content Include="Reports\FormationWiseSummaryDateRange.aspx" />
+    <Content Include="Reports\FormationWiseSummaryDateRangeDeparture.aspx" />
+    <Content Include="Reports\FormationWiseSummaryDeparture.aspx" />
+    <Content Include="Reports\HoldingReport.aspx" />
+    <Content Include="Reports\HoldStatusReportDateWise.aspx" />
+    <Content Include="Reports\HQWiseReport.aspx" />
+    <Content Include="Reports\HQWiseReportDateWise.aspx" />
+    <Content Include="Reports\ManifestCombineReport.aspx" />
+    <Content Include="Reports\ManifestReport.aspx" />
+    <Content Include="Reports\MedicalStatusReport.aspx" />
+    <Content Include="Reports\MedicalStatusReportDateWise.aspx" />
+    <Content Include="Reports\OnHoldingDateRangeReport.aspx" />
+    <Content Include="Reports\OnHoldingReport.aspx" />
+    <Content Include="Reports\RationReport.aspx" />
+    <Content Include="Reports\RedGreenStatus.aspx" />
+    <Content Include="Reports\RedGreenStatusDateWise.aspx" />
+    <Content Include="Reports\ReserveManifestReport.aspx" />
+    <Content Include="Reports\UnitWiseReport.aspx" />
+    <Content Include="Reports\UnitWiseReportDateWise.aspx" />
+    <Content Include="Reports\WaitingDateWise.aspx" />
+    <Content Include="Reports\WaitingReport.aspx" />
+    <Content Include="Reports\WaitingReportDateWise.aspx" />
+    <Content Include="Reports\WaitingReportFMNWise.aspx" />
+    <Content Include="UserControl\Paging.ascx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bookings\AddBillAttribute.aspx.cs">
+      <DependentUpon>AddBillAttribute.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bookings\AddBillAttribute.aspx.designer.cs">
+      <DependentUpon>AddBillAttribute.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\AddBlock.aspx.cs">
+      <DependentUpon>AddBlock.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bookings\AddBlock.aspx.designer.cs">
+      <DependentUpon>AddBlock.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\AddBooking.aspx.cs">
+      <DependentUpon>AddBooking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bookings\AddBooking.aspx.designer.cs">
+      <DependentUpon>AddBooking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\AddRoom.aspx.cs">
+      <DependentUpon>AddRoom.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bookings\AddRoom.aspx.designer.cs">
+      <DependentUpon>AddRoom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\BillAttributeList.aspx.cs">
+      <DependentUpon>BillAttributeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bookings\BillAttributeList.aspx.designer.cs">
+      <DependentUpon>BillAttributeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\BlockList.aspx.cs">
+      <DependentUpon>BlockList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bookings\BlockList.aspx.designer.cs">
+      <DependentUpon>BlockList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\BookingList.aspx.cs">
+      <DependentUpon>BookingList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bookings\BookingList.aspx.designer.cs">
+      <DependentUpon>BookingList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\RoomList.aspx.cs">
+      <DependentUpon>RoomList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bookings\RoomList.aspx.designer.cs">
+      <DependentUpon>RoomList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ADDateRange.aspx.cs">
+      <DependentUpon>ADDateRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ADDateRange.aspx.designer.cs">
+      <DependentUpon>ADDateRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ADFormationWiseSummary.aspx.cs">
+      <DependentUpon>ADFormationWiseSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ADFormationWiseSummary.aspx.designer.cs">
+      <DependentUpon>ADFormationWiseSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddADType.aspx.cs">
+      <DependentUpon>AddADType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddADType.aspx.designer.cs">
+      <DependentUpon>AddADType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddAirline.aspx.cs">
+      <DependentUpon>AddAirline.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddAirline.aspx.designer.cs">
+      <DependentUpon>AddAirline.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddCamp.aspx.cs">
+      <DependentUpon>AddCamp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddCamp.aspx.designer.cs">
+      <DependentUpon>AddCamp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddCategory.aspx.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddCategory.aspx.designer.cs">
+      <DependentUpon>AddCategory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddCharterDetails.aspx.cs">
+      <DependentUpon>AddCharterDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddCharterDetails.aspx.designer.cs">
+      <DependentUpon>AddCharterDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddCity.aspx.cs">
+      <DependentUpon>AddCity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddCity.aspx.designer.cs">
+      <DependentUpon>AddCity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddDivision.aspx.cs">
+      <DependentUpon>AddDivision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddDivision.aspx.designer.cs">
+      <DependentUpon>AddDivision.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddHeadquarter.aspx.cs">
+      <DependentUpon>AddHeadquarter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddHeadquarter.aspx.designer.cs">
+      <DependentUpon>AddHeadquarter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddLeave.aspx.cs">
+      <DependentUpon>AddLeave.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddLeave.aspx.designer.cs">
+      <DependentUpon>AddLeave.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddLevel.aspx.cs">
+      <DependentUpon>AddLevel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddLevel.aspx.designer.cs">
+      <DependentUpon>AddLevel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddMedicalStatus.aspx.cs">
+      <DependentUpon>AddMedicalStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddMedicalStatus.aspx.designer.cs">
+      <DependentUpon>AddMedicalStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddMove.aspx.cs">
+      <DependentUpon>AddMove.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddMove.aspx.designer.cs">
+      <DependentUpon>AddMove.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddOutLogic.aspx.cs">
+      <DependentUpon>AddOutLogic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddOutLogic.aspx.designer.cs">
+      <DependentUpon>AddOutLogic.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddPriority.aspx.cs">
+      <DependentUpon>AddPriority.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddPriority.aspx.designer.cs">
+      <DependentUpon>AddPriority.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddPriorityStatus.aspx.cs">
+      <DependentUpon>AddPriorityStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddPriorityStatus.aspx.designer.cs">
+      <DependentUpon>AddPriorityStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddRank.aspx.cs">
+      <DependentUpon>AddRank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddRank.aspx.designer.cs">
+      <DependentUpon>AddRank.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddSignature.aspx.cs">
+      <DependentUpon>AddSignature.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddSignature.aspx.designer.cs">
+      <DependentUpon>AddSignature.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddTransport.aspx.cs">
+      <DependentUpon>AddTransport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddTransport.aspx.designer.cs">
+      <DependentUpon>AddTransport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddUnit.aspx.cs">
+      <DependentUpon>AddUnit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddUnit.aspx.designer.cs">
+      <DependentUpon>AddUnit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADEntery.aspx.cs">
+      <DependentUpon>ADEntery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADEntery.aspx.designer.cs">
+      <DependentUpon>ADEntery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADIsLoadList.aspx.cs">
+      <DependentUpon>ADIsLoadList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADIsLoadList.aspx.designer.cs">
+      <DependentUpon>ADIsLoadList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADLeaveEntry.aspx.cs">
+      <DependentUpon>ADLeaveEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADLeaveEntry.aspx.designer.cs">
+      <DependentUpon>ADLeaveEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADLeaveList.aspx.cs">
+      <DependentUpon>ADLeaveList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADLeaveList.aspx.designer.cs">
+      <DependentUpon>ADLeaveList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADList.aspx.cs">
+      <DependentUpon>ADList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADList.aspx.designer.cs">
+      <DependentUpon>ADList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADListOnTempHold.aspx.cs">
+      <DependentUpon>ADListOnTempHold.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADListOnTempHold.aspx.designer.cs">
+      <DependentUpon>ADListOnTempHold.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADListPriorityWise.aspx.cs">
+      <DependentUpon>ADListPriorityWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADListPriorityWise.aspx.designer.cs">
+      <DependentUpon>ADListPriorityWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADListReserve.aspx.cs">
+      <DependentUpon>ADListReserve.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADListReserve.aspx.designer.cs">
+      <DependentUpon>ADListReserve.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADOnHoldStatusList.aspx.cs">
+      <DependentUpon>ADOnHoldStatusList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADOnHoldStatusList.aspx.designer.cs">
+      <DependentUpon>ADOnHoldStatusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADTDEntry.aspx.cs">
+      <DependentUpon>ADTDEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADTDEntry.aspx.designer.cs">
+      <DependentUpon>ADTDEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADTDList.aspx.cs">
+      <DependentUpon>ADTDList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADTDList.aspx.designer.cs">
+      <DependentUpon>ADTDList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ADTypeList.aspx.cs">
+      <DependentUpon>ADTypeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ADTypeList.aspx.designer.cs">
+      <DependentUpon>ADTypeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AirlineList.aspx.cs">
+      <DependentUpon>AirlineList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AirlineList.aspx.designer.cs">
+      <DependentUpon>AirlineList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AllManifests.aspx.cs">
+      <DependentUpon>AllManifests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AllManifests.aspx.designer.cs">
+      <DependentUpon>AllManifests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AllReserveManifests.aspx.cs">
+      <DependentUpon>AllReserveManifests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AllReserveManifests.aspx.designer.cs">
+      <DependentUpon>AllReserveManifests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CampList.aspx.cs">
+      <DependentUpon>CampList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CampList.aspx.designer.cs">
+      <DependentUpon>CampList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CategoryList.aspx.cs">
+      <DependentUpon>CategoryList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CategoryList.aspx.designer.cs">
+      <DependentUpon>CategoryList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CharterADEntery.aspx.cs">
+      <DependentUpon>CharterADEntery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CharterADEntery.aspx.designer.cs">
+      <DependentUpon>CharterADEntery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CharterADList.aspx.cs">
+      <DependentUpon>CharterADList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CharterADList.aspx.designer.cs">
+      <DependentUpon>CharterADList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CharterDetailsList.aspx.cs">
+      <DependentUpon>CharterDetailsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CharterDetailsList.aspx.designer.cs">
+      <DependentUpon>CharterDetailsList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\CitiesList.aspx.cs">
+      <DependentUpon>CitiesList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\CitiesList.aspx.designer.cs">
+      <DependentUpon>CitiesList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DivisionList.aspx.cs">
+      <DependentUpon>DivisionList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DivisionList.aspx.designer.cs">
+      <DependentUpon>DivisionList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FamilyEntry.aspx.cs">
+      <DependentUpon>FamilyEntry.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FamilyEntry.aspx.designer.cs">
+      <DependentUpon>FamilyEntry.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\FamilyList.aspx.cs">
+      <DependentUpon>FamilyList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\FamilyList.aspx.designer.cs">
+      <DependentUpon>FamilyList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\HeadquarterList.aspx.cs">
+      <DependentUpon>HeadquarterList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\HeadquarterList.aspx.designer.cs">
+      <DependentUpon>HeadquarterList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\LeaveList.aspx.cs">
+      <DependentUpon>LeaveList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LeaveList.aspx.designer.cs">
+      <DependentUpon>LeaveList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\LevelList.aspx.cs">
+      <DependentUpon>LevelList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\LevelList.aspx.designer.cs">
+      <DependentUpon>LevelList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Manifest.aspx.cs">
+      <DependentUpon>Manifest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Manifest.aspx.designer.cs">
+      <DependentUpon>Manifest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ManifestList.aspx.cs">
+      <DependentUpon>ManifestList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ManifestList.aspx.designer.cs">
+      <DependentUpon>ManifestList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MedicalStatusList.aspx.cs">
+      <DependentUpon>MedicalStatusList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MedicalStatusList.aspx.designer.cs">
+      <DependentUpon>MedicalStatusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\MoveList.aspx.cs">
+      <DependentUpon>MoveList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\MoveList.aspx.designer.cs">
+      <DependentUpon>MoveList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\OutLogicList.aspx.cs">
+      <DependentUpon>OutLogicList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\OutLogicList.aspx.designer.cs">
+      <DependentUpon>OutLogicList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PriorityList.aspx.cs">
+      <DependentUpon>PriorityList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PriorityList.aspx.designer.cs">
+      <DependentUpon>PriorityList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PriorityStatusList.aspx.cs">
+      <DependentUpon>PriorityStatusList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PriorityStatusList.aspx.designer.cs">
+      <DependentUpon>PriorityStatusList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\RankList.aspx.cs">
+      <DependentUpon>RankList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\RankList.aspx.designer.cs">
+      <DependentUpon>RankList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\ReserveManifestDetails.aspx.cs">
+      <DependentUpon>ReserveManifestDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ReserveManifestDetails.aspx.designer.cs">
+      <DependentUpon>ReserveManifestDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\SignatureList.aspx.cs">
+      <DependentUpon>SignatureList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\SignatureList.aspx.designer.cs">
+      <DependentUpon>SignatureList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TransferCourierToCharter.aspx.cs">
+      <DependentUpon>TransferCourierToCharter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TransferCourierToCharter.aspx.designer.cs">
+      <DependentUpon>TransferCourierToCharter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TransferCourierToCharterList.aspx.cs">
+      <DependentUpon>TransferCourierToCharterList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TransferCourierToCharterList.aspx.designer.cs">
+      <DependentUpon>TransferCourierToCharterList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TransportDetailList.aspx.cs">
+      <DependentUpon>TransportDetailList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TransportDetailList.aspx.designer.cs">
+      <DependentUpon>TransportDetailList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TransportDetails.aspx.cs">
+      <DependentUpon>TransportDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TransportDetails.aspx.designer.cs">
+      <DependentUpon>TransportDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\TransportList.aspx.cs">
+      <DependentUpon>TransportList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\TransportList.aspx.designer.cs">
+      <DependentUpon>TransportList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UnitList.aspx.cs">
+      <DependentUpon>UnitList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UnitList.aspx.designer.cs">
+      <DependentUpon>UnitList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserHistory.aspx.cs">
+      <DependentUpon>UserHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserHistory.aspx.designer.cs">
+      <DependentUpon>UserHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserHistoryDetails.aspx.cs">
+      <DependentUpon>UserHistoryDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserHistoryDetails.aspx.designer.cs">
+      <DependentUpon>UserHistoryDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UserList.aspx.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\UserList.aspx.designer.cs">
+      <DependentUpon>UserList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CreateAccount.aspx.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateAccount.aspx.designer.cs">
+      <DependentUpon>CreateAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ManifestDetails.aspx.cs">
+      <DependentUpon>ManifestDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManifestDetails.aspx.designer.cs">
+      <DependentUpon>ManifestDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\ADReportDateWise.aspx.cs">
+      <DependentUpon>ADReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ADReportDateWise.aspx.designer.cs">
+      <DependentUpon>ADReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ADReportMoveTypeDateWise.aspx.cs">
+      <DependentUpon>ADReportMoveTypeDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ADReportMoveTypeDateWise.aspx.designer.cs">
+      <DependentUpon>ADReportMoveTypeDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ADReportToday.aspx.cs">
+      <DependentUpon>ADReportToday.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ADReportToday.aspx.designer.cs">
+      <DependentUpon>ADReportToday.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ADReportMoveType.aspx.cs">
+      <DependentUpon>ADReportMoveType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ADReportMoveType.aspx.designer.cs">
+      <DependentUpon>ADReportMoveType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ADUnitWiseDateRange.aspx.cs">
+      <DependentUpon>ADUnitWiseDateRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ADUnitWiseDateRange.aspx.designer.cs">
+      <DependentUpon>ADUnitWiseDateRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ArrivalCityDateWise.aspx.cs">
+      <DependentUpon>ArrivalCityDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ArrivalCityDateWise.aspx.designer.cs">
+      <DependentUpon>ArrivalCityDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ArrivalUnitWiseSummary.aspx.cs">
+      <DependentUpon>ArrivalUnitWiseSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ArrivalUnitWiseSummary.aspx.designer.cs">
+      <DependentUpon>ArrivalUnitWiseSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ArrivalUnitWiseSummaryDateRange.aspx.cs">
+      <DependentUpon>ArrivalUnitWiseSummaryDateRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ArrivalUnitWiseSummaryDateRange.aspx.designer.cs">
+      <DependentUpon>ArrivalUnitWiseSummaryDateRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CancellationReport.aspx.cs">
+      <DependentUpon>CancellationReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CancellationReport.aspx.designer.cs">
+      <DependentUpon>CancellationReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CancellationReportDateWise.aspx.cs">
+      <DependentUpon>CancellationReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CancellationReportDateWise.aspx.designer.cs">
+      <DependentUpon>CancellationReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CityDateWise.aspx.cs">
+      <DependentUpon>CityDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\CityDateWise.aspx.designer.cs">
+      <DependentUpon>CityDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DeepartureDivisionReport.aspx.cs">
+      <DependentUpon>DeepartureDivisionReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DeepartureDivisionReport.aspx.designer.cs">
+      <DependentUpon>DeepartureDivisionReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DeepartureDivisionReportDateWise.aspx.cs">
+      <DependentUpon>DeepartureDivisionReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DeepartureDivisionReportDateWise.aspx.designer.cs">
+      <DependentUpon>DeepartureDivisionReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureCityWise.aspx.cs">
+      <DependentUpon>DepartureCityWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureCityWise.aspx.designer.cs">
+      <DependentUpon>DepartureCityWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureCityWiseDateWise.aspx.cs">
+      <DependentUpon>DepartureCityWiseDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureCityWiseDateWise.aspx.designer.cs">
+      <DependentUpon>DepartureCityWiseDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureDateWise.aspx.cs">
+      <DependentUpon>DepartureDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureDateWise.aspx.designer.cs">
+      <DependentUpon>DepartureDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureDateWiseDaily.aspx.cs">
+      <DependentUpon>DepartureDateWiseDaily.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureDateWiseDaily.aspx.designer.cs">
+      <DependentUpon>DepartureDateWiseDaily.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureHQWise.aspx.cs">
+      <DependentUpon>DepartureHQWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureHQWise.aspx.designer.cs">
+      <DependentUpon>DepartureHQWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureHQWiseDateWise.aspx.cs">
+      <DependentUpon>DepartureHQWiseDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureHQWiseDateWise.aspx.designer.cs">
+      <DependentUpon>DepartureHQWiseDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureMoveType.aspx.cs">
+      <DependentUpon>DepartureMoveType.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureMoveType.aspx.designer.cs">
+      <DependentUpon>DepartureMoveType.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureMoveTypeDateWise.aspx.cs">
+      <DependentUpon>DepartureMoveTypeDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureMoveTypeDateWise.aspx.designer.cs">
+      <DependentUpon>DepartureMoveTypeDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureTransportWise.aspx.cs">
+      <DependentUpon>DepartureTransportWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureTransportWise.aspx.designer.cs">
+      <DependentUpon>DepartureTransportWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureTransportWiseDateWise.aspx.cs">
+      <DependentUpon>DepartureTransportWiseDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureTransportWiseDateWise.aspx.designer.cs">
+      <DependentUpon>DepartureTransportWiseDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureUnitWiseReport.aspx.cs">
+      <DependentUpon>DepartureUnitWiseReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureUnitWiseReport.aspx.designer.cs">
+      <DependentUpon>DepartureUnitWiseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureUnitWiseReportDateWise.aspx.cs">
+      <DependentUpon>DepartureUnitWiseReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureUnitWiseReportDateWise.aspx.designer.cs">
+      <DependentUpon>DepartureUnitWiseReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureUnitWiseSummary.aspx.cs">
+      <DependentUpon>DepartureUnitWiseSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureUnitWiseSummary.aspx.designer.cs">
+      <DependentUpon>DepartureUnitWiseSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DepartureUnitWiseSummaryDateRange.aspx.cs">
+      <DependentUpon>DepartureUnitWiseSummaryDateRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DepartureUnitWiseSummaryDateRange.aspx.designer.cs">
+      <DependentUpon>DepartureUnitWiseSummaryDateRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DivisonWiseReport.aspx.cs">
+      <DependentUpon>DivisonWiseReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DivisonWiseReport.aspx.designer.cs">
+      <DependentUpon>DivisonWiseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DivisonWiseReportDateWise.aspx.cs">
+      <DependentUpon>DivisonWiseReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\DivisonWiseReportDateWise.aspx.designer.cs">
+      <DependentUpon>DivisonWiseReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FlyReport.aspx.cs">
+      <DependentUpon>FlyReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\FlyReport.aspx.designer.cs">
+      <DependentUpon>FlyReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FlyReportDateWise.aspx.cs">
+      <DependentUpon>FlyReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\FlyReportDateWise.aspx.designer.cs">
+      <DependentUpon>FlyReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FormationWiseSummary.aspx.cs">
+      <DependentUpon>FormationWiseSummary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\FormationWiseSummary.aspx.designer.cs">
+      <DependentUpon>FormationWiseSummary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FormationWiseSummaryDateRange.aspx.cs">
+      <DependentUpon>FormationWiseSummaryDateRange.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\FormationWiseSummaryDateRange.aspx.designer.cs">
+      <DependentUpon>FormationWiseSummaryDateRange.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FormationWiseSummaryDateRangeDeparture.aspx.cs">
+      <DependentUpon>FormationWiseSummaryDateRangeDeparture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\FormationWiseSummaryDateRangeDeparture.aspx.designer.cs">
+      <DependentUpon>FormationWiseSummaryDateRangeDeparture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\FormationWiseSummaryDeparture.aspx.cs">
+      <DependentUpon>FormationWiseSummaryDeparture.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\FormationWiseSummaryDeparture.aspx.designer.cs">
+      <DependentUpon>FormationWiseSummaryDeparture.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\HoldingReport.aspx.cs">
+      <DependentUpon>HoldingReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\HoldingReport.aspx.designer.cs">
+      <DependentUpon>HoldingReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\HoldStatusReportDateWise.aspx.cs">
+      <DependentUpon>HoldStatusReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\HoldStatusReportDateWise.aspx.designer.cs">
+      <DependentUpon>HoldStatusReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\HQWiseReport.aspx.cs">
+      <DependentUpon>HQWiseReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\HQWiseReport.aspx.designer.cs">
+      <DependentUpon>HQWiseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\HQWiseReportDateWise.aspx.cs">
+      <DependentUpon>HQWiseReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\HQWiseReportDateWise.aspx.designer.cs">
+      <DependentUpon>HQWiseReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ManifestCombineReport.aspx.cs">
+      <DependentUpon>ManifestCombineReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ManifestCombineReport.aspx.designer.cs">
+      <DependentUpon>ManifestCombineReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ManifestReport.aspx.cs">
+      <DependentUpon>ManifestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ManifestReport.aspx.designer.cs">
+      <DependentUpon>ManifestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MedicalStatusReport.aspx.cs">
+      <DependentUpon>MedicalStatusReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\MedicalStatusReport.aspx.designer.cs">
+      <DependentUpon>MedicalStatusReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\MedicalStatusReportDateWise.aspx.cs">
+      <DependentUpon>MedicalStatusReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\MedicalStatusReportDateWise.aspx.designer.cs">
+      <DependentUpon>MedicalStatusReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OnHoldingDateRangeReport.aspx.cs">
+      <DependentUpon>OnHoldingDateRangeReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\OnHoldingDateRangeReport.aspx.designer.cs">
+      <DependentUpon>OnHoldingDateRangeReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\OnHoldingReport.aspx.cs">
+      <DependentUpon>OnHoldingReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\OnHoldingReport.aspx.designer.cs">
+      <DependentUpon>OnHoldingReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RationReport.aspx.cs">
+      <DependentUpon>RationReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\RationReport.aspx.designer.cs">
+      <DependentUpon>RationReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RedGreenStatus.aspx.cs">
+      <DependentUpon>RedGreenStatus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\RedGreenStatus.aspx.designer.cs">
+      <DependentUpon>RedGreenStatus.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\RedGreenStatusDateWise.aspx.cs">
+      <DependentUpon>RedGreenStatusDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\RedGreenStatusDateWise.aspx.designer.cs">
+      <DependentUpon>RedGreenStatusDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\ReserveManifestReport.aspx.cs">
+      <DependentUpon>ReserveManifestReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\ReserveManifestReport.aspx.designer.cs">
+      <DependentUpon>ReserveManifestReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\UnitWiseReport.aspx.cs">
+      <DependentUpon>UnitWiseReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\UnitWiseReport.aspx.designer.cs">
+      <DependentUpon>UnitWiseReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\UnitWiseReportDateWise.aspx.cs">
+      <DependentUpon>UnitWiseReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\UnitWiseReportDateWise.aspx.designer.cs">
+      <DependentUpon>UnitWiseReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\WaitingDateWise.aspx.cs">
+      <DependentUpon>WaitingDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\WaitingDateWise.aspx.designer.cs">
+      <DependentUpon>WaitingDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\WaitingReport.aspx.cs">
+      <DependentUpon>WaitingReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\WaitingReport.aspx.designer.cs">
+      <DependentUpon>WaitingReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\WaitingReportDateWise.aspx.cs">
+      <DependentUpon>WaitingReportDateWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\WaitingReportDateWise.aspx.designer.cs">
+      <DependentUpon>WaitingReportDateWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\WaitingReportFMNWise.aspx.cs">
+      <DependentUpon>WaitingReportFMNWise.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\WaitingReportFMNWise.aspx.designer.cs">
+      <DependentUpon>WaitingReportFMNWise.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Routing\Routing.cs" />
+    <Compile Include="SiteMaster.Master.cs">
+      <DependentUpon>SiteMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteMaster.Master.designer.cs">
+      <DependentUpon>SiteMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\Paging.ascx.cs">
+      <DependentUpon>Paging.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControl\Paging.ascx.designer.cs">
+      <DependentUpon>Paging.ascx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\images\favicon\manifest.json" />
+    <Content Include="Content\images\favicon\site.webmanifest" />
+    <Content Include="Content\css\volt.css.map" />
+    <Content Include="Content\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="packages.config" />
+    <Content Include="SiteMaster.Master" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\assets\" />
+    <Folder Include="Content\images\Docs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogicLayer\BusinessLayer.csproj">
+      <Project>{011d6ced-f10d-4de0-9f21-a54940c0eef3}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{de72806c-5122-40dd-abe3-32e0c8540a9c}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{5516b225-bb94-469c-9597-97095606872c}</Project>
+      <Name>DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper\Helper.csproj">
+      <Project>{5365f110-bbec-4199-9032-8a58a5920b87}</Project>
+      <Name>Helper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>52092</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44351/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
