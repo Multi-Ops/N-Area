@@ -39,6 +39,7 @@ namespace BusinessLayer
         public Nullable<long> UserRoleID { get; set; }
         public Nullable<long> ADID { get; set; }
         public Nullable<long> CityID { get; set; }
+        public Nullable<long> BrigadeID { get; set; }
         public Nullable<long> RankID { get; set; }
         public Nullable<long> DivID { get; set; }
         public Nullable<long> HQID { get; set; }

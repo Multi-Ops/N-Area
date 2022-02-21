@@ -317,7 +317,7 @@ i.fas.fa-search {
     background: #262b40 !important;
 }
 
-#ContentPlaceHolder1_chkTemporaryHold, #ContentPlaceHolder1_chkOnHoldStatus, #ContentPlaceHolder1_chkIsPriority, #ContentPlaceHolder1_chkIsLoad {
+#ContentPlaceHolder1_chkTemporaryHold, #ContentPlaceHolder1_chkOnHoldStatus, #ContentPlaceHolder1_chkIsPriority, #ContentPlaceHolder1_chkIsLoad, #ContentPlaceHolder1_chkIsFly {
     width: 20px !important;
     height: 20px !important;
     float: left;

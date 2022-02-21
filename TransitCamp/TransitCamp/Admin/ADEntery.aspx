@@ -37,9 +37,9 @@
                 <ContentTemplate>
                     <div id="divRptrADNo" runat="server" class="mr-2 w-25 bg-white row float-left form-bg-image d-flex align-items-center mb-4 mb-lg-0 bg-white shadow-soft border rounded border-light p-2 p-lg-2">
                         <div class="p-lg-4">
-                            <h1 class="mb-0 h4 text-center text-md-center mt-1 p-3">AD Entry No</h1>
+                            <h1 class="mb-0 h4 text-center text-md-center mt-1 p-3">Entry No</h1>
                             <a href="ADList">
-                                <h5 class="mb-0 h6 text-center text-md-center mb-3" style="color: #4a5073;">AD List</h5>
+                                <h5 class="mb-0 h6 text-center text-md-center mb-3" style="color: #4a5073;">List</h5>
                             </a>
                             <input name="SearchADEntry" type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search">
                             <div class="mt-2 mb-2"></div>
@@ -82,7 +82,7 @@
                                                     </asp:Label>
                                                 </div>
                                             </div>
-                                            <h1 class="mb-0 h3 custome-heading">AD Entry
+                                            <h1 class="mb-0 h3 custome-heading">Entry
                                             </h1>
                                         </div>
                                     </div>
@@ -143,14 +143,14 @@
                                     </div>
                                     <div class="row mt-4">
 
-                                        <div class="col">
+                                        <div class="col d-none">
                                             <label for="email">Lve No Of Days</label>
                                             <span class="icon-arrange">
                                                 <asp:TextBox runat="server" ID="txtLeaveNoOfDays" CssClass="form-control border-none" placeholder="No Of Days" Enabled="true" onchange="LeaveEmpty();"></asp:TextBox>
                                             </span>
                                             <asp:RegularExpressionValidator Display="Dynamic" ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtLeaveNoOfDays" ErrorMessage="Please Enter Only Numbers" ForeColor="Red" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
                                         </div>
-                                        <div class="col">
+                                        <div class="col d-none">
                                             <label for="email">From Date</label>
                                             <span class="icon-arrange">
                                                 <asp:TextBox runat="server" ReadOnly="false" TextMode="Date" ID="txtLeaveFromDate" CssClass="form-control border-none" data-date-format="dd-mm-yyyy" data-link-field="ContentPlaceHolder1_hfLeaveFromDate" onchange="Leavevalue();"></asp:TextBox>
@@ -167,12 +167,21 @@
                                         <div class="col">
                                             <label for="email">FN/AN</label>
                                             <span class="icon-arrange">
-                                                <asp:DropDownList runat="server" ID="ddlSession" CssClass="form-control border-none" onchange="javascript:Leavevalue();">
+                                                <asp:DropDownList runat="server" ID="ddlSession" CssClass="form-control border-none">
                                                     <asp:ListItem Value="0" Text="--Select--"></asp:ListItem>
                                                     <asp:ListItem Value="1" Text="FN"></asp:ListItem>
                                                     <asp:ListItem Value="2" Text="AN"></asp:ListItem>
                                                 </asp:DropDownList>
                                             </span>
+                                        </div>
+
+                                        <div class="col">
+                                            <label for="email">Date</label>
+                                            <span class="icon-arrange">
+                                                <asp:TextBox runat="server" ID="txtDate" for="ContentPlaceHolder1_hfDate" TextMode="DateTime" ReadOnly="true" CssClass="form-control date form_datetime border-none" data-date-format="dd-mm-yyyy - HH:ii p" data-link-field="ContentPlaceHolder1_hfDate"></asp:TextBox>
+                                                <asp:HiddenField runat="server" ID="hfDate" Value="" />
+                                            </span>
+                                            <asp:RequiredFieldValidator ControlToValidate="txtDate" runat="server" Display="Dynamic" ID="RequiredFieldValidator5" ForeColor="Red" ErrorMessage="Rquired!"></asp:RequiredFieldValidator>
                                         </div>
                                     </div>
                                     <div class="row mt-4 mb-3">
@@ -188,17 +197,9 @@
                                     </div>
                                     <div class="row mt-4 mb-3">
 
-                                        <div class="col">
-                                            <label for="email">Date</label>
-                                            <span class="icon-arrange">
-                                                <asp:TextBox runat="server" ID="txtDate" for="ContentPlaceHolder1_hfDate" TextMode="DateTime" ReadOnly="true" CssClass="form-control date form_datetime border-none" data-date-format="dd-mm-yyyy - HH:ii p" data-link-field="ContentPlaceHolder1_hfDate"></asp:TextBox>
-                                                <asp:HiddenField runat="server" ID="hfDate" Value="" />
-                                            </span>
-                                            <asp:RequiredFieldValidator ControlToValidate="txtDate" runat="server" Display="Dynamic" ID="RequiredFieldValidator5" ForeColor="Red" ErrorMessage="Rquired!"></asp:RequiredFieldValidator>
-                                        </div>
 
 
-                                        <div class="col">
+                                        <div class="col d-none">
                                             <label for="email">
                                                 To Date
                                             </label>
@@ -207,6 +208,15 @@
                                                 <asp:HiddenField runat="server" ID="hfLeaveToDate" Value="" />
                                             </span>
                                         </div>
+
+                                        <div class="col">
+                                            <label for="email">Brigade</label>
+                                            <span class="icon-arrange">
+                                                <asp:DropDownList runat="server" ID="ddlBrigade" CssClass="form-control border-none" Enabled="false"></asp:DropDownList>
+                                            </span>
+                                            <div class="table" id="NameAuto1"></div>
+                                        </div>
+
                                         <div class="col">
                                             <label for="email">DIV Name</label>
                                             <span class="icon-arrange">
@@ -263,7 +273,8 @@
 
                                     <div class="d-flex justify-content-between align-items-top mb-3 pl-2 pr-2">
                                         <asp:CheckBox For="email" ID="chkTemporaryHold" runat="server" CssClass="CheckBox mt-4" Text="Is Cancel" OnClick="modelpopup();" />
-                                        <asp:CheckBox For="email" ID="chkIsLoad" runat="server" CssClass="CheckBox mt-4" Text="IsLoad" />
+                                        <asp:CheckBox For="email" ID="chkIsFly" runat="server" CssClass="CheckBox mt-4" Text="IsFly" Visible="false" />
+                                        <asp:CheckBox For="email" ID="chkIsLoad" runat="server" CssClass="CheckBox mt-4" Text="IsLoad" Visible="false" />
                                         <asp:CheckBox For="email" ID="chkOnHoldStatus" runat="server" CssClass="CheckBox mt-4" Text="On Hold Status" OnClick="modelpopupOnHold();" />
                                         <span id="prio">
                                             <input type="checkbox" id="chkIsPriority" class="CheckBox mt-4" onclick="ShowHideDiv(this)" runat="server" />
@@ -375,7 +386,7 @@
                 startView: 2,
                 forceParse: 0,
                 showMeridian: 1,
-                startDate: new (Date),
+                //startDate: new (Date),
             });
         });
         prm.add_endRequest(function () {
@@ -387,7 +398,7 @@
                 startView: 2,
                 forceParse: 0,
                 showMeridian: 1,
-                startDate: new (Date),
+                //startDate: new (Date),
             });
         });
 
@@ -660,6 +671,7 @@
                     var UnitID = document.getElementById("ContentPlaceHolder1_ddlUnit");
                     var DivID = document.getElementById("ContentPlaceHolder1_ddlDiv");
                     var HQID = document.getElementById("ContentPlaceHolder1_ddlHQ");
+                    var BrigadeID = document.getElementById("ContentPlaceHolder1_ddlBrigade");
                     var RankID = document.getElementById("ContentPlaceHolder1_ddlRank");
                     var Authority = document.getElementById("ContentPlaceHolder1_txtAut");
                     var MoveID = document.getElementById("ContentPlaceHolder1_ddlMove");
@@ -737,6 +749,7 @@
                     $(UnitID).val(UnitID.value).trigger("chosen:updated");
                     DivID.value = data.DivID;
                     HQID.value = data.HQID;
+                    BrigadeID.value = data.BrigadeID;
                     RankID.value = data.RankID;
                     $(RankID).val(RankID.value).trigger("chosen:updated");
                     Authority.value = data.Authority;

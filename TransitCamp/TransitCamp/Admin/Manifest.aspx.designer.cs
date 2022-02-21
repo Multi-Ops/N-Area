@@ -132,15 +132,6 @@ namespace TransitCamp.Admin
         protected global::System.Web.UI.WebControls.Button btnBulkMovePriority;
 
         /// <summary>
-        /// btnPrioLoad control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrioLoad;
-
-        /// <summary>
         /// btnPrioNormal control.
         /// </summary>
         /// <remarks>
@@ -148,15 +139,6 @@ namespace TransitCamp.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPrioNormal;
-
-        /// <summary>
-        /// btnPrioReserve control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPrioReserve;
 
         /// <summary>
         /// ddlCityGeneral control.
@@ -229,24 +211,6 @@ namespace TransitCamp.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnMovePriorityGen;
-
-        /// <summary>
-        /// btnMoveLoadGen control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMoveLoadGen;
-
-        /// <summary>
-        /// btnMoveReserveGen control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnMoveReserveGen;
 
         /// <summary>
         /// ddlCityReserve control.

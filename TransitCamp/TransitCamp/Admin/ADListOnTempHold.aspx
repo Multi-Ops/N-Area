@@ -10,15 +10,15 @@
             <div class="table-container">
 
                 <div class="table-wrp">
-                    <h3 class="mt-5">Cancel AD</h3>
+                    <h3 class="mt-5">Cancel List</h3>
 
                     <div class="float-left pt-4 pl-1"><a href="ADEntery"><b>Add</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADList"><b>AD List</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADListReserve"><b>Reserve</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADListPriorityWise"><b>Priority</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADListOnTempHold"><b>Cancel AD List</b></a></div>
+                    <div class="float-left pt-4 pl-4"><a href="ADList"><b>List</b></a></div>
+                    <%--<div class="float-left pt-4 pl-4"><a href="ADListReserve"><b>Reserve</b></a></div>--%>
+                    <%--<div class="float-left pt-4 pl-4"><a href="ADListPriorityWise"><b>Priority</b></a></div>--%>
+                    <div class="float-left pt-4 pl-4"><a href="ADListOnTempHold"><b>Cancel List</b></a></div>
                     <div class="float-left pt-4 pl-4"><a href="ADOnHoldStatusList"><b>On Hold Status</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADIsLoadList"><b>Load</b></a></div>
+                    <%--<div class="float-left pt-4 pl-4"><a href="ADIsLoadList"><b>Load</b></a></div>--%>
 
 
                     <div class="float-right w-25 pr-1">

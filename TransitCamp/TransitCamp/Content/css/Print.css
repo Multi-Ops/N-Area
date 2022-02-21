@@ -121,3 +121,22 @@ THEAD {
     text-align: right;
     width: 51px !important;
 }
+
+#ContentPlaceHolder1_grdUser tr:last-child {
+    font-weight: bolder;
+}
+
+.heading-details {
+    float: left;
+    padding: 0px 10px 5px 20px;
+    font-size: 10px;
+    font-weight: bolder;
+}
+
+    .heading-details.pad {
+        padding: 0 0 0 0 !important;
+    }
+
+.dec, .dec h4 {
+    float: left;
+}

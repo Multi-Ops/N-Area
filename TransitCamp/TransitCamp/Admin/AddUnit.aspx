@@ -26,6 +26,12 @@
                                         <asp:DropDownList ID="ddlHQ" runat="server" CssClass="form-control border-none"></asp:DropDownList>
                                     </span>
                                 </div>
+                                <div class="col">
+                                    <label for="email">Brigade</label>
+                                    <span class="icon-arrange">
+                                        <asp:DropDownList ID="ddlBrigade" runat="server" CssClass="form-control border-none"></asp:DropDownList>
+                                    </span>
+                                </div>
                             </div>
                             <div class="row mt-2">
                                 <div class="col">
@@ -40,6 +46,7 @@
                                         <asp:DropDownList ID="ddlCity" runat="server" CssClass="form-control border-none"></asp:DropDownList>
                                     </span>
                                 </div>
+
                             </div>
                             <div class="d-flex justify-content-between align-items-top mb-3">
                                 <asp:Label ID="lblError" runat="server" Visible="false" ForeColor="Red"></asp:Label>

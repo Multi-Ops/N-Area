@@ -18,6 +18,7 @@ namespace DataAccessLayer
         public Nullable<long> HQID { get; set; }
         public Nullable<long> CityID { get; set; }
         public Nullable<long> DivID { get; set; }
+        public Nullable<long> BrigadeID { get; set; }
         public string UnitName { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }

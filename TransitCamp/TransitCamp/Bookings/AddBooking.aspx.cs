@@ -67,7 +67,7 @@ namespace TransitCamp.Bookings
                                 {
                                     if (getroomdetails.MaxRoomCap == 0)
                                     {
-                                        getroomdetails.IsShare = true;
+                                        getroomdetails.IsFull = true;
                                         bookingServices.UpdateRoom(getroomdetails);
                                         bookingServices.Save();
 
@@ -84,7 +84,7 @@ namespace TransitCamp.Bookings
                                         InfoBook.ADId = AdId;
                                         InfoBook.BlockId = Convert.ToInt64(getroomdetails.BlockId);
                                         InfoBook.RoomId = Convert.ToInt32(getroomdetails.Id);
-                                        
+
                                         bookingServices.InsertBooking(InfoBook);
                                         bookingServices.Save();
                                     }

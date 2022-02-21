@@ -19,5 +19,16 @@ namespace DataLayer
         int CheckAlreadyExist(string divname);
         void Save();
         List<Division> GetDivtDetails();
+
+        //brigade
+        Brigade GetBrigID(Int64 id);
+        void InsertBrig(Brigade div);
+        Int64 UpdateBrig(Brigade div);
+        List<Brigade> PagingBrig(Int32 take, Int32 skip);
+        Int32 TotalItemsBrig();
+        void DeleteBrig(Int64 ID);
+        List<Brigade> GetSearchResultBrig(String SearchText);
+        int CheckAlreadyExistBrig(string divname);
+        List<Brigade> GetBrigDetails();
     }
 }

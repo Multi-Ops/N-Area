@@ -18,6 +18,7 @@ namespace DataAccessLayer
         public string ADNO { get; set; }
         public string ReferenceN0 { get; set; }
         public string DocumentUrl { get; set; }
+        public Nullable<long> BrigadeId { get; set; }
         public Nullable<long> CategoryID { get; set; }
         public Nullable<long> CityID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }

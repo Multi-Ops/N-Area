@@ -66,7 +66,7 @@ namespace TransitCamp.Bookings
                 else if (e.CommandName == "Delete")
                 {
                     bookingServices = new BookingServices(new TCContext());
-                    bookingServices.Delete(Id);
+                    bookingServices.DeleteRoom(Id);
                     Bind();
                 }
                 else

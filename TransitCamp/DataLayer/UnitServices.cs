@@ -32,6 +32,7 @@ namespace DataLayer
                             HQID = p.HQID,
                             DivID = p.DivID,
                             CityID = p.CityID,
+                            BrigadeID = p.BrigadeID
                         }).FirstOrDefault();
 
             return data;
@@ -47,7 +48,8 @@ namespace DataLayer
                     {
                         ID = p.ID,
                         UnitName = p.UnitName,
-                        CityID = p.CityID
+                        CityID = p.CityID,
+                        BrigadeID = p.BrigadeID
                     }).ToList();
 
             return list;
@@ -67,7 +69,9 @@ namespace DataLayer
                                HQID = h.ID,
                                DivID = d.ID,
                                HQName = h.HQName,
-                               DivisionName = d.DivName
+                               DivisionName = d.DivName,
+                               BrigadeID = p.BrigadeID,
+                               CityID = p.CityID
                            }).FirstOrDefault();
             return getdata;
         }
@@ -81,7 +85,8 @@ namespace DataLayer
                 HQID = info.HQID,
                 DivID = info.DivID,
                 CityID = info.CityID,
-                CreatedOn = info.CreatedOn
+                CreatedOn = info.CreatedOn,
+                BrigadeID = info.BrigadeID
             };
             context.unitmasters.Add(data);
         }
@@ -97,6 +102,7 @@ namespace DataLayer
             data.DivID = info.DivID;
             data.CityID = info.CityID;
             data.UpdatedOn = info.UpdatedOn;
+            data.BrigadeID = info.BrigadeID;
             context.Entry(data).State = EntityState.Modified;
             return data.ID;
         }
@@ -109,6 +115,7 @@ namespace DataLayer
                     join d in context.divmasters on p.DivID equals d.ID
                     join h in context.hqmasters on p.HQID equals h.ID
                     join c in context.citymasters on p.CityID equals c.ID
+                    join b in context.brigadematers on p.BrigadeID equals b.Id
                     select new Unit
                     {
                         ID = p.ID,
@@ -118,6 +125,8 @@ namespace DataLayer
                         DivisionName = d.DivName,
                         HQName = h.HQName,
                         CityName = c.CityName,
+                        BrigadeID = p.BrigadeID,
+                        BName = b.Name
                     }).OrderByDescending(x => x.ID).Skip(skip).Take(take).ToList();
             return list;
         }
@@ -150,6 +159,8 @@ namespace DataLayer
                     join d in context.divmasters on p.DivID equals d.ID
                     join h in context.hqmasters on p.HQID equals h.ID
                     join c in context.citymasters on p.CityID equals c.ID
+                    join b in context.brigadematers on p.BrigadeID equals b.Id
+
                     where p.UnitName.Contains(SearchText)
                     select new Unit
                     {
@@ -160,6 +171,8 @@ namespace DataLayer
                         DivisionName = d.DivName,
                         HQName = h.HQName,
                         CityName = c.CityName,
+                        BrigadeID = p.BrigadeID,
+                        BName = b.Name
                     }).OrderByDescending(x => x.ID).ToList();
 
             return list;

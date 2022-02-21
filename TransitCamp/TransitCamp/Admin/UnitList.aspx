@@ -53,6 +53,11 @@
                                         <%#Eval("CityName") %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                <asp:TemplateField HeaderText="City">
+                                    <ItemTemplate>
+                                        <%#Eval("BName") %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Action" ItemStyle-Width="15%">
                                     <ItemTemplate>
                                         <span>

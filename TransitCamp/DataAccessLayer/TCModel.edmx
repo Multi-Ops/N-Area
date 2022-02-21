@@ -43,6 +43,7 @@
           <Property Name="ADNO" Type="varchar" MaxLength="250" />
           <Property Name="ReferenceN0" Type="varchar" MaxLength="250" />
           <Property Name="DocumentUrl" Type="varchar" MaxLength="500" />
+          <Property Name="BrigadeId" Type="bigint" />
           <Property Name="CategoryID" Type="bigint" />
           <Property Name="CityID" Type="bigint" />
           <Property Name="Date" Type="datetime" Precision="0" />
@@ -193,6 +194,15 @@
           <Property Name="RoomId" Type="int" />
           <Property Name="CreatedOn" Type="bigint" Nullable="false" />
           <Property Name="UpdatedOn" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brigademater">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" />
+          <Property Name="UpdatedOn" Type="datetime" Precision="0" />
         </EntityType>
         <EntityType Name="campmaster">
           <Key>
@@ -617,6 +627,7 @@
           <Property Name="HQID" Type="bigint" />
           <Property Name="CityID" Type="bigint" />
           <Property Name="DivID" Type="bigint" />
+          <Property Name="BrigadeID" Type="bigint" />
           <Property Name="UnitName" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="CreatedOn" Type="datetime" Precision="0" />
           <Property Name="UpdatedOn" Type="datetime" Precision="0" />
@@ -663,6 +674,7 @@
           <EntitySet Name="billattributes" EntityType="Self.billattributes" Schema="" store:Type="Tables" />
           <EntitySet Name="blockmaster" EntityType="Self.blockmaster" Schema="" store:Type="Tables" />
           <EntitySet Name="bookings" EntityType="Self.bookings" Schema="" store:Type="Tables" />
+          <EntitySet Name="brigademater" EntityType="Self.brigademater" Schema="" store:Type="Tables" />
           <EntitySet Name="campmaster" EntityType="Self.campmaster" Schema="" store:Type="Tables" />
           <EntitySet Name="cancel" EntityType="Self.cancel" Schema="" store:Type="Tables" />
           <EntitySet Name="cancelindividual" EntityType="Self.cancelindividual" Schema="" store:Type="Tables" />
@@ -710,6 +722,7 @@
           <EntitySet Name="billattributes" EntityType="nareaModel.billattribute" />
           <EntitySet Name="blockmasters" EntityType="nareaModel.blockmaster" />
           <EntitySet Name="bookings" EntityType="nareaModel.booking" />
+          <EntitySet Name="brigadematers" EntityType="nareaModel.brigademater" />
           <EntitySet Name="campmasters" EntityType="nareaModel.campmaster" />
           <EntitySet Name="cancels" EntityType="nareaModel.cancel" />
           <EntitySet Name="cancelindividuals" EntityType="nareaModel.cancelindividual" />
@@ -780,6 +793,7 @@
           <Property Name="ADNO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="ReferenceN0" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="DocumentUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BrigadeId" Type="Int64" />
           <Property Name="CategoryID" Type="Int64" />
           <Property Name="CityID" Type="Int64" />
           <Property Name="Date" Type="DateTime" />
@@ -930,6 +944,15 @@
           <Property Name="RoomId" Type="Int32" />
           <Property Name="CreatedOn" Type="Int64" Nullable="false" />
           <Property Name="UpdatedOn" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="brigademater">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" />
+          <Property Name="UpdatedOn" Type="DateTime" />
         </EntityType>
         <EntityType Name="campmaster">
           <Key>
@@ -1354,6 +1377,7 @@
           <Property Name="HQID" Type="Int64" />
           <Property Name="CityID" Type="Int64" />
           <Property Name="DivID" Type="Int64" />
+          <Property Name="BrigadeID" Type="Int64" />
           <Property Name="UnitName" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="CreatedOn" Type="DateTime" />
           <Property Name="UpdatedOn" Type="DateTime" />
@@ -1465,6 +1489,7 @@
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="BrigadeId" ColumnName="BrigadeId" />
                 <ScalarProperty Name="DocumentUrl" ColumnName="DocumentUrl" />
                 <ScalarProperty Name="ReferenceN0" ColumnName="ReferenceN0" />
                 <ScalarProperty Name="ADNO" ColumnName="ADNO" />
@@ -1590,6 +1615,16 @@
                 <ScalarProperty Name="ADId" ColumnName="ADId" />
                 <ScalarProperty Name="CommonID" ColumnName="CommonID" />
                 <ScalarProperty Name="BlockId" ColumnName="BlockId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="brigadematers">
+            <EntityTypeMapping TypeName="nareaModel.brigademater">
+              <MappingFragment StoreEntitySet="brigademater">
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2043,6 +2078,7 @@
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="BrigadeID" ColumnName="BrigadeID" />
                 <ScalarProperty Name="DivID" ColumnName="DivID" />
                 <ScalarProperty Name="CityID" ColumnName="CityID" />
                 <ScalarProperty Name="HQID" ColumnName="HQID" />

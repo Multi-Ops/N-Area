@@ -87,7 +87,8 @@ namespace DataLayer
                         IsReserve = p.IsReserve,
                         MoveID = m.ID,
                         MoveName = m.MoveName,
-                        IsOnHold = p.IsOnHold
+                        IsOnHold = p.IsOnHold,
+                        IsFly = p.IsFly
 
                     }).ToList();
             return data;
@@ -755,6 +756,7 @@ namespace DataLayer
                                Name = p.Name,
                                UnitID = p.UnitID,
                                DivID = p.DivID,
+                               BrigadeID = p.BrigadeId,
                                HQID = p.HQID,
                                Authority = p.Authority,
                                Session = p.Session,
@@ -787,7 +789,7 @@ namespace DataLayer
                                CheckOutDate = p.CheckOutDate,
                                IsFly = p.IsFly,
                                IsLRC = p.IsLRC,
-                               BookingId = p.BookingId
+                               BookingId = p.BookingId,
                            }).FirstOrDefault();
             return getdata;
         }
@@ -834,7 +836,8 @@ namespace DataLayer
                     IsFly = info.IsFly,
                     IsLRC = info.IsLRC,
                     CheckOutDate = info.CheckOutDate,
-                    CreatedOn = info.CreatedOn
+                    CreatedOn = info.CreatedOn,
+                    BrigadeId = info.BrigadeID,
                 };
                 context.admasters.Add(data);
                 Save();
@@ -891,6 +894,7 @@ namespace DataLayer
             data.IsLRC = info.IsLRC;
             data.IsFly = info.IsFly;
             data.CheckOutDate = info.CheckOutDate;
+            data.BrigadeId = info.BrigadeID;
             context.Entry(data).State = EntityState.Modified;
             return data.ID;
         }
@@ -5025,12 +5029,13 @@ namespace DataLayer
             List<ADEntery> list = new List<ADEntery>();
 
             list = (from p in context.admasters
-                    where p.IsPriority == true && p.IsTempHold == false && p.IsManifest == false && p.IsOnHold == false && p.IsLoad == false
+                    where p.IsPriority == true && p.IsTempHold == false && p.IsManifest == false && p.IsOnHold == false && p.IsLoad == false && p.IsFly == true
                     select new ADEntery
                     {
                         ID = p.ID,
                         ADNO = p.ADNO,
                         Name = p.Name,
+                        IsFly = p.IsFly
                     }).ToList();
             return list;
         }
@@ -5041,12 +5046,13 @@ namespace DataLayer
             List<ADEntery> list = new List<ADEntery>();
 
             list = (from p in context.admasters
-                    where p.IsPriority == true && p.IsTempHold == false && p.IsManifest == false && p.IsOnHold == false && p.IsLoad == false && p.CityID == cityID
+                    where p.IsPriority == true && p.IsTempHold == false && p.IsManifest == false && p.IsOnHold == false && p.IsLoad == false && p.CityID == cityID && p.IsFly == true
                     select new ADEntery
                     {
                         ID = p.ID,
                         ADNO = p.ADNO,
                         Name = p.Name,
+                        IsFly = p.IsFly
                     }).ToList();
             return list;
         }
@@ -5058,12 +5064,13 @@ namespace DataLayer
             List<ADEntery> list = new List<ADEntery>();
 
             list = (from p in context.admasters
-                    where p.IsPriority == true && p.IsTempHold == false && p.IsManifest == false && p.CityID == CityID && p.IsOnHold == false && p.IsLoad == false
+                    where p.IsPriority == true && p.IsTempHold == false && p.IsManifest == false && p.CityID == CityID && p.IsOnHold == false && p.IsLoad == false && p.IsFly == true
                     select new ADEntery
                     {
                         ID = p.ID,
                         ADNO = p.ADNO,
                         Name = p.Name,
+                        IsFly = p.IsFly
                     }).ToList();
             return list;
         }
@@ -5075,12 +5082,13 @@ namespace DataLayer
             List<ADEntery> list = new List<ADEntery>();
 
             list = (from p in context.admasters
-                    where p.IsPriority == false && p.IsTempHold == false && p.IsReserve != true && p.IsManifest == false && p.CityID == CityID && p.IsOnHold == false && p.IsLoad == false
+                    where p.IsPriority == false && p.IsTempHold == false && p.IsReserve != true && p.IsManifest == false && p.CityID == CityID && p.IsOnHold == false && p.IsLoad == false && p.IsFly == true
                     select new ADEntery
                     {
                         ID = p.ID,
                         ADNO = p.ADNO,
                         Name = p.Name,
+                        IsFly = p.IsFly
                     }).ToList();
             return list;
         }
@@ -5092,7 +5100,7 @@ namespace DataLayer
             List<ADEntery> list = new List<ADEntery>();
 
             list = (from p in context.admasters
-                    where p.IsReserve == true && p.IsTempHold == false && p.IsManifest == false && p.CityID == CityID && p.IsOnHold == false && p.IsLoad == false
+                    where p.IsReserve == true && p.IsTempHold == false && p.IsManifest == false && p.CityID == CityID && p.IsOnHold == false && p.IsLoad == false && p.IsFly == true
                     select new ADEntery
                     {
                         ID = p.ID,
@@ -5132,6 +5140,7 @@ namespace DataLayer
                         ID = p.ID,
                         ADNO = p.ADNO,
                         Name = p.Name,
+                        IsFly = p.IsFly
                     }).ToList();
             return list;
         }
@@ -5149,6 +5158,7 @@ namespace DataLayer
                         ID = p.ID,
                         ADNO = p.ADNO,
                         Name = p.Name,
+                        IsFly = p.IsFly
                     }).ToList();
             return list;
         }
@@ -5165,6 +5175,7 @@ namespace DataLayer
                         ID = p.ID,
                         ADNO = p.ADNO,
                         Name = p.Name,
+                        IsFly = p.IsFly
                     }).ToList();
             return list;
         }
@@ -5282,7 +5293,9 @@ namespace DataLayer
                         ID = p.ID,
                         ADNO = p.ADNO,
                         Name = p.Name,
-                        IsTempHold = p.IsTempHold
+                        IsTempHold = p.IsTempHold,
+                        IsFly = p.IsFly,
+                        CheckOutDate = p.CheckOutDate
                     }).ToList();
             return list;
         }

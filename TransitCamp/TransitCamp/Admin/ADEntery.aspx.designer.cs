@@ -213,15 +213,6 @@ namespace TransitCamp.Admin
         protected global::System.Web.UI.WebControls.DropDownList ddlSession;
 
         /// <summary>
-        /// txtState control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtState;
-
-        /// <summary>
         /// txtDate control.
         /// </summary>
         /// <remarks>
@@ -249,6 +240,15 @@ namespace TransitCamp.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
 
         /// <summary>
+        /// txtState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtState;
+
+        /// <summary>
         /// txtLeaveToDate control.
         /// </summary>
         /// <remarks>
@@ -265,6 +265,15 @@ namespace TransitCamp.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfLeaveToDate;
+
+        /// <summary>
+        /// ddlBrigade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBrigade;
 
         /// <summary>
         /// ddlDiv control.
@@ -373,6 +382,15 @@ namespace TransitCamp.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkTemporaryHold;
+
+        /// <summary>
+        /// chkIsFly control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkIsFly;
 
         /// <summary>
         /// chkIsLoad control.

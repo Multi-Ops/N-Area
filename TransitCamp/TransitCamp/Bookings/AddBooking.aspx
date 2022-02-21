@@ -25,7 +25,7 @@
                                     <label for="email">Room Selection</label>
                                     <span class="icon-arrange">
 
-                                        <a class="form-control" data-toggle="modal" data-target="#ad">Select Rooms
+                                        <a class="form-control select-room" data-toggle="modal" data-target="#ad">Select Rooms
                                             <%--<asp:TextBox ID="txtSelectRooms" runat="server" Enabled="false"></asp:TextBox>--%></a>
 
                                         <div class="modal fade" id="ad" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

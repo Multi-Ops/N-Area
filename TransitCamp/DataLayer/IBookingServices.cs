@@ -44,6 +44,7 @@ namespace DataLayer
         //Bookings Attributres
         List<Booking> GetDetailsBooking();
         Booking GetIDBooking(Int64 id);
+        Booking GetBookingByADID(Int64 id);
         void InsertBooking(Booking info);
         Int64 UpdateBooking(Booking info);
         List<Booking> PagingBooking(Int32 take, Int32 skip);

@@ -80,6 +80,8 @@ namespace TransitCamp.Routing
             RouteTable.Routes.MapPageRoute("ManifestDetails", "ManifestDetails", "~/ManifestDetails.aspx");
             RouteTable.Routes.MapPageRoute("AllReserveManifests", "AllReserveManifests", "~/Admin/AllReserveManifests.aspx");
             RouteTable.Routes.MapPageRoute("ReserveManifestDetails", "ReserveManifestDetails", "~/Admin/ReserveManifestDetails.aspx");
+            RouteTable.Routes.MapPageRoute("Brigade", "Brigade", "~/Admin/Brigade.aspx");
+            RouteTable.Routes.MapPageRoute("BrigadeList", "BrigadeList", "~/Admin/BrigadeList.aspx");
 
             //Reports
             RouteTable.Routes.MapPageRoute("ManifestReport", "ManifestReport", "~/Reports/ManifestReport.aspx");
@@ -149,6 +151,8 @@ namespace TransitCamp.Routing
             RouteTable.Routes.MapPageRoute("BookingList", "BookingList", "~/Bookings/BookingList.aspx");
             RouteTable.Routes.MapPageRoute("RoomList", "RoomList", "~/Bookings/RoomList.aspx");
             RouteTable.Routes.MapPageRoute("AddRoom", "AddRoom", "~/Bookings/AddRoom.aspx");
+            RouteTable.Routes.MapPageRoute("PrepareBill", "PrepareBill", "~/Bookings/PrepareBill.aspx");
+
         }
     }
 }

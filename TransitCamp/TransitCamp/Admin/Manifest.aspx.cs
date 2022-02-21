@@ -416,12 +416,18 @@ namespace TransitCamp.Admin
             {
                 Int64 cityID = Convert.ToInt64(ddlCity.SelectedValue);
                 var data = aDServices.ADEntryNoPriority(cityID);
+                data = (from p in data
+                        where p.IsFly == true
+                        select p).ToList();
                 rptPriority.DataSource = data;
                 rptPriority.DataBind();
             }
             else
             {
                 var data = aDServices.ADEntryNoPriority();
+                data = (from p in data
+                        where p.IsFly == true
+                        select p).ToList();
                 rptPriority.DataSource = data;
                 rptPriority.DataBind();
             }
@@ -432,6 +438,9 @@ namespace TransitCamp.Admin
         {
             aDServices = new ADServices(new TCContext());
             var data = aDServices.ADEntryNoPriorityCat(CatID);
+            data = (from p in data
+                    where p.IsFly == true
+                    select p).ToList();
             rptPriority.DataSource = data;
             rptPriority.DataBind();
         }
@@ -441,6 +450,9 @@ namespace TransitCamp.Admin
         {
             aDServices = new ADServices(new TCContext());
             var data = aDServices.ADEntryNoPriorityCity(CityID);
+            data = (from p in data
+                    where p.IsFly == true
+                    select p).ToList();
             rptPriority.DataSource = data;
             rptPriority.DataBind();
         }
@@ -450,6 +462,11 @@ namespace TransitCamp.Admin
         {
             aDServices = new ADServices(new TCContext());
             var data = aDServices.ADEntryNoGeneralCity(CityID);
+            // get Ads eligible to fly 
+            data = (from p in data
+                    where p.IsFly == true
+                    select p).ToList();
+
             rptGeneral.DataSource = data;
             rptGeneral.DataBind();
         }
@@ -481,12 +498,18 @@ namespace TransitCamp.Admin
             {
                 Int64 cityID = Convert.ToInt64(ddlCity.SelectedValue);
                 var data = aDServices.ADEntryNoGeneralCityWise(cityID);
+                data = (from p in data
+                        where p.IsFly == true
+                        select p).ToList();
                 rptGeneral.DataSource = data;
                 rptGeneral.DataBind();
             }
             else
             {
                 var data = aDServices.ADEntryNoGeneral();
+                data = (from p in data
+                        where p.IsFly == true
+                        select p).ToList();
                 rptGeneral.DataSource = data;
                 rptGeneral.DataBind();
             }
@@ -1503,6 +1526,7 @@ namespace TransitCamp.Admin
                 Int64 TransportDetailID = Convert.ToInt64(ddlTransport.SelectedValue);
                 var gettransportdetails = transportDetailsServices.GetDetailsByID(TransportDetailID);
                 var allads = aDServices.GetAllADLeft(Convert.ToInt64(gettransportdetails.CityID));
+                allads = allads.Where(x => x.IsFly == true).ToList();
                 BusinessLayer.ADEntery infoAD = new BusinessLayer.ADEntery();
                 BusinessLayer.Manifest info = new BusinessLayer.Manifest();
 
@@ -1517,7 +1541,7 @@ namespace TransitCamp.Admin
                     if (ddlBulkAdd.SelectedItem.Text.ToLower() == "priority")
                     {
                         var priorityAds = from p in allads
-                                          where p.IsPriority == true && p.IsTempHold == false && (p.CategoryName.ToLower().Contains("or") || p.CategoryName.ToLower().Contains("other"))
+                                          where p.IsPriority == true && p.IsTempHold == false && (p.CategoryName.ToLower().Contains("off") || p.CategoryName.ToLower().Contains("officer"))
                                           select p;
                         foreach (var res in priorityAds.Take(Convert.ToInt32(txtAddNo.Text)))
                         {
@@ -1683,7 +1707,7 @@ namespace TransitCamp.Admin
                     else if (ddlBulkAdd.SelectedItem.Text.ToLower() == "normal")
                     {
                         var generalAds = from p in allads
-                                         where p.IsPriority == false && p.IsTempHold == false && p.IsLoad == false && p.IsReserve == false && (p.CategoryName.ToLower().Contains("or") || p.CategoryName.ToLower().Contains("other"))
+                                         where p.IsPriority == false && p.IsTempHold == false && p.IsLoad == false && p.IsReserve == false && (p.CategoryName.ToLower().Contains("off") || p.CategoryName.ToLower().Contains("officer"))
                                          select p;
                         foreach (var res in generalAds.Take(Convert.ToInt32(txtAddNo.Text)))
                         {

@@ -15,6 +15,8 @@ namespace DataLayer
     {
         #region Interface
 
+        #region Division
+
         //create instance of data access context
         private TCContext context;
         public DivisionServices(TCContext context)
@@ -143,6 +145,126 @@ namespace DataLayer
                 return Convert.ToInt32(divid);
             }
         }
+
+
+        #endregion
+
+        #region Brigarde
+
+        //get Division details
+        public List<Brigade> GetBrigDetails()
+        {
+            List<Brigade> list = new List<Brigade>();
+
+            list = (from p in context.brigadematers
+                    select new Brigade
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                    }).ToList();
+
+            return list;
+        }
+
+        //get division by id
+        public Brigade GetBrigID(Int64 id)
+        {
+            Brigade div = new Brigade();
+            var getdiv = (from p in context.brigadematers
+                          where p.Id == id
+                          select new Brigade
+                          {
+                              Name = p.Name,
+                          }).FirstOrDefault();
+            return getdiv;
+        }
+
+        //Insert Division
+        public void InsertBrig(Brigade info)
+        {
+            var res = new brigademater
+            {
+                Name = info.Name,
+                CreatedOn = info.CreatedOn
+            };
+            context.brigadematers.Add(res);
+        }
+
+        //update division
+        public Int64 UpdateBrig(Brigade info)
+        {
+            var data = (from p in context.brigadematers
+                        where p.Id == info.Id
+                        select p).FirstOrDefault();
+            data.Name = info.Name;
+            data.UpdatedOn = info.UpdatedOn;
+
+            context.Entry(data).State = EntityState.Modified;
+            return data.Id;
+        }
+
+        //Get List of division from database
+        public List<Brigade> PagingBrig(Int32 take, Int32 skip)
+        {
+            List<Brigade> list = new List<Brigade>();
+            list = (from p in context.brigadematers
+                    select new Brigade
+                    {
+                        Id = p.Id,
+                        Name = p.Name,
+                    }).OrderByDescending(x => x.Id).Skip(skip).Take(take).ToList();
+            return list;
+        }
+
+        //Get total number of records present in DataBase
+        public Int32 TotalItemsBrig()
+        {
+            var count = (from p in context.brigadematers
+                         select p).Count();
+
+            return count;
+        }
+
+        //Delete from Database by ID
+        public void DeleteBrig(Int64 ID)
+        {
+            var data = (from p in context.brigadematers
+                        where p.Id == ID
+                        select p).FirstOrDefault();
+            context.brigadematers.Remove(data);
+            context.SaveChanges();
+        }
+
+        //Get searched list of divisions from database
+        public List<Brigade> GetSearchResultBrig(String SearchText)
+        {
+            List<Brigade> list = new List<Brigade>();
+
+            list = (from d in context.brigadematers
+                    where d.Name.Contains(SearchText)
+                    select new Brigade
+                    {
+                        Id = d.Id,
+                        Name = d.Name,
+                    }).OrderByDescending(x => x.Id).ToList();
+
+            return list;
+        }
+
+        //check if Divison Name Already exist
+        public int CheckAlreadyExistBrig(string divname)
+        {
+            var divid = context.brigadematers.FirstOrDefault(u => u.Name == divname)?.Id;
+            if (divid == null)
+            {
+                return 0;
+            }
+            else
+            {
+                return Convert.ToInt32(divid);
+            }
+        }
+        #endregion
 
         //save context
         public void Save()

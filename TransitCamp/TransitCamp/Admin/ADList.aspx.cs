@@ -99,9 +99,58 @@ namespace TransitCamp.Admin
                     var getad = aDServices.GetByID(Id);
                     if (getad != null)
                     {
-                        getad.CheckOutDate = DateTime.Now;
-                        aDServices.Update(getad);
-                        aDServices.Save();
+                        //remove room attached 
+                        var getbookingdetails = bookingServices.GetBookingByADID(Id);
+                        if (getbookingdetails != null)
+                        {
+                            var getroomdetails = bookingServices.GetIDRoom((int)(getbookingdetails.RoomId));
+                            if (getroomdetails != null)
+                            {
+                                if (getroomdetails.IsShare)
+                                {
+                                    getroomdetails.MaxRoomCap = getroomdetails.MaxRoomCap + 1;
+                                    getroomdetails.IsFull = false;
+                                    bookingServices.UpdateRoom(getroomdetails);
+                                    bookingServices.Save();
+                                }
+                                else
+                                {
+                                    getroomdetails.IsFull = false;
+                                    bookingServices.UpdateRoom(getroomdetails);
+                                    bookingServices.Save();
+                                }
+
+                                getad.CheckOutDate = DateTime.Now;
+                                aDServices.Update(getad);
+                                aDServices.Save();
+
+                                ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('PrintBill!');window.location = 'PrepareBill?Id=" + Id + "';", true);
+
+                                //PrepareBill
+                            }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Please Assign Room First!');window.location = 'AddBooking?ID=" + Id + "';", true);
+                        }
+                    }
+
+                    Bind();
+                }
+                else if (e.CommandName == "PrintBill")
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Print Bill!');window.location = 'PrepareBill?Id=" + Id + "';", true);
+                }
+                else if (e.CommandName == "CancelCheckOut")
+                {
+                    bookingServices = new BookingServices(new TCContext());
+                    aDServices = new ADServices(new TCContext());
+                    var getad = aDServices.GetByID(Id);
+                    if (getad != null)
+                    {
+                        //getad.CheckOutDate = null;
+                        //aDServices.Update(getad);
+                        //aDServices.Save();
                     }
 
                     Bind();
@@ -111,7 +160,7 @@ namespace TransitCamp.Admin
 
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
             }

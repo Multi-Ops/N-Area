@@ -81,9 +81,9 @@ namespace TransitCamp.Reports
                         lblManifestNo.Text = data[0].MenifestNo;
                         lblTransportDetails.Text = transportdetails.TransportDetail;
 
-                        lblRptRank.Text = sign.RankName;
-                        lblRptName.Text = sign.SignatureName;
-                        lblRptDate.Text = DateTime.Now.ToString("dd MMMM yyyy");
+                        //lblRptRank.Text = sign.RankName;
+                        //lblRptName.Text = sign.SignatureName;
+                        lblRptDate.Text = DateTime.Now.ToString("MMMM yyyy");
 
                         grdManifestReport.DataSource = dt;
                         grdManifestReport.DataBind();
@@ -139,10 +139,10 @@ namespace TransitCamp.Reports
                     }
                 }
                 total = jcos + officer + other;
-                lblJCOs.Text = jcos.ToString();
-                lblOfficer.Text = officer.ToString();
-                lblOR.Text = other.ToString();
-                lblNoOfTrans.Text = total.ToString();
+                //lblJCOs.Text = jcos.ToString();
+                //lblOfficer.Text = officer.ToString();
+                //lblOR.Text = other.ToString();
+                //lblNoOfTrans.Text = total.ToString();
             }
             catch (Exception ex)
             {

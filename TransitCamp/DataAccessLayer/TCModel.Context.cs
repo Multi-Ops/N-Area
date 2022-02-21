@@ -35,6 +35,7 @@ namespace DataAccessLayer
         public virtual DbSet<billattribute> billattributes { get; set; }
         public virtual DbSet<blockmaster> blockmasters { get; set; }
         public virtual DbSet<booking> bookings { get; set; }
+        public virtual DbSet<brigademater> brigadematers { get; set; }
         public virtual DbSet<campmaster> campmasters { get; set; }
         public virtual DbSet<cancel> cancels { get; set; }
         public virtual DbSet<cancelindividual> cancelindividuals { get; set; }

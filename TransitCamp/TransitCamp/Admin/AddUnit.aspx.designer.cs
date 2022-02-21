@@ -42,6 +42,15 @@ namespace TransitCamp.Admin
         protected global::System.Web.UI.WebControls.DropDownList ddlHQ;
 
         /// <summary>
+        /// ddlBrigade control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBrigade;
+
+        /// <summary>
         /// ddlDiv control.
         /// </summary>
         /// <remarks>

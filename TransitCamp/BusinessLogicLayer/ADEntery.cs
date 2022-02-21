@@ -24,6 +24,7 @@ namespace BusinessLayer
         public string Name { get; set; }
         public Nullable<long> UnitID { get; set; }
         public Nullable<long> DivID { get; set; }
+        public Nullable<long> BrigadeID { get; set; }
         public Nullable<long> HQID { get; set; }
         public string Authority { get; set; }
         public string OnTemHoldRemark { get; set; }

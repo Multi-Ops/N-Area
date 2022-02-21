@@ -150,7 +150,8 @@ namespace DataLayer
                             RankID = u.RankID,
                             HQID = un.HQID,
                             CategoryID = u.CategoryID,
-                            CityID = un.CityID
+                            CityID = un.CityID,
+                            BrigadeID = a.BrigadeId
                         }).FirstOrDefault();
             return user;
         }

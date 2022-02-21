@@ -31,6 +31,7 @@ namespace TransitCamp.Admin
         protected ICategoryServices categoryServices;
         protected IUserServices userServices;
         protected IMedicalStatusServices medicalStatusServices;
+        protected IBookingServices bookingServices;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,6 +39,7 @@ namespace TransitCamp.Admin
             {
                 BindRank();
                 BindDiv();
+                BindBrig();
                 BindUnit();
                 BindCity();
                 BindHQ();
@@ -310,6 +312,18 @@ namespace TransitCamp.Admin
             ddlDiv.Items.Insert(0, new ListItem("-- Select --", ""));
         }
 
+        //bind Brigade
+        protected void BindBrig()
+        {
+            divisionServices = new DivisionServices(new TCContext());
+            var getlist = divisionServices.GetBrigDetails();
+            ddlBrigade.DataSource = getlist;
+            ddlBrigade.DataValueField = "Id";
+            ddlBrigade.DataTextField = "Name";
+            ddlBrigade.DataBind();
+            ddlBrigade.Items.Insert(0, new ListItem("-- Select --", ""));
+        }
+
         //bind HQ
         protected void BindHQ()
         {
@@ -376,7 +390,7 @@ namespace TransitCamp.Admin
             aDServices = new ADServices(new TCContext());
             var data = aDServices.ADEntryNo();
             data = (from p in data
-                    where p.IsTempHold == false
+                    where p.IsTempHold == false && p.CheckOutDate.ToString() == string.Empty
                     orderby p.ID descending
                     select p).ToList();
 
@@ -397,6 +411,12 @@ namespace TransitCamp.Admin
                 btnSave.Visible = false;
                 chkIsPriority.Checked = false;
                 divRptrADNo.Visible = false;
+                chkIsFly.Visible = true;
+
+                if (getdetails.IsFly == true)
+                    chkIsFly.Checked = true;
+                else
+                    chkIsFly.Checked = false;
 
                 //temporary hold for 24 hours
                 //if (getdetails.IsTempHold == true)
@@ -432,6 +452,7 @@ namespace TransitCamp.Admin
                 ddlUnit.SelectedValue = getdetails.UnitID.ToString();
                 ddlDiv.SelectedValue = getdetails.DivID.ToString();
                 ddlHQ.SelectedValue = getdetails.HQID.ToString();
+                ddlBrigade.SelectedValue = getdetails.BrigadeID.ToString();
                 ddlMove.SelectedValue = getdetails.MoveID.ToString();
                 ddlPriority.SelectedValue = getdetails.PriorityID.ToString();
                 ddlADType.SelectedValue = getdetails.AdTypeID.ToString();
@@ -599,6 +620,7 @@ namespace TransitCamp.Admin
             info.ArmyNo = getdetails.ArmyNo;
             info.UnitID = getdetails.UnitID;
             info.DivID = getdetails.DivID;
+            info.BrigadeID = getdetails.BrigadeID;
             info.HQID = getdetails.HQID;
             info.RankID = getdetails.RankID;
             info.Authority = getdetails.Authority;
@@ -722,6 +744,7 @@ namespace TransitCamp.Admin
                     userServices = new UserServices(new TCContext());
                     cityServices = new CityServices(new TCContext());
                     categoryServices = new CategoryServices(new TCContext());
+                    bookingServices = new BookingServices(new TCContext());
 
                     if (Convert.ToString(Session["HFID"]) == string.Empty)
                         id = Convert.ToInt32(Request.QueryString["ADID"]);
@@ -752,6 +775,7 @@ namespace TransitCamp.Admin
                     info.UnitID = Convert.ToInt64(ddlUnit.SelectedValue);
                     info.DivID = Convert.ToInt64(ddlDiv.SelectedValue);
                     info.HQID = Convert.ToInt64(ddlHQ.SelectedValue);
+                    info.BrigadeID = Convert.ToInt64(ddlBrigade.SelectedValue);
                     info.Authority = txtAut.Text;
                     info.OnTemHoldRemark = txtOnTempHoldRemark.Text;
                     info.OnHoldRemark = txtOnHoldRemark.Text;
@@ -852,9 +876,11 @@ namespace TransitCamp.Admin
                     if (id != 0)
                     {
                         var getbyid = aDServices.GetByID(id);
+                        info = getbyid;
                         info.ADNO = getbyid.ADNO;
                         info.ID = id;
                         info.IsReserve = getbyid.IsReserve;
+
 
                         if (info.UpdatedOn != null)
                         {
@@ -873,6 +899,12 @@ namespace TransitCamp.Admin
                             info.UpdatedOn = null;
                         }
 
+                        if (chkIsFly.Checked == true)
+                            info.IsFly = true;
+                        else
+                            info.IsFly = false;
+
+
                         users.ADID = id;
                         users.UpdatedOn = DateTime.Now;
                         userServices.Update(users);
@@ -880,7 +912,17 @@ namespace TransitCamp.Admin
                         aDServices.Update(info);
                         aDServices.Save();
                         clear();
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Data Saved!');window.location = 'AddBooking?ID=" + id + "';", true);
+
+                        //check booking
+                        var checkbooking = bookingServices.GetBookingByADID(id);
+                        if (checkbooking == null)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Data Saved!');window.location = 'AddBooking?ID=" + id + "';", true);
+                        }
+                        else
+                        {
+                            Response.Redirect("ADEntery");
+                        }
                         //Response.Redirect("ADEntery");
                     }
                     else
@@ -1010,9 +1052,17 @@ namespace TransitCamp.Admin
                         userServices.Insert(users);
                         userServices.Save();
                         clear();
-                        //Response.Redirect("ADEntery");
-                        ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Data Saved!');window.location = 'AddBooking?ID=" + ADID + "';", true);
 
+                        var checkbooking = bookingServices.GetBookingByADID(id);
+                        if (checkbooking == null)
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "showalert", "alert('Data Saved!');window.location = 'AddBooking?ID=" + ADID + "';", true);
+                        }
+                        else
+                        {
+                            Response.Redirect("ADEntery");
+                        }
+                        //Response.Redirect("ADEntery");
                     }
                 }
                 Session["HFID"] = string.Empty;
@@ -1059,6 +1109,7 @@ namespace TransitCamp.Admin
                 ddlDiv.SelectedValue = getbyICard.DivID.ToString();
                 ddlHQ.SelectedValue = getbyICard.HQID.ToString();
                 ddlUnit.SelectedValue = getbyICard.UnitID.ToString();
+                ddlBrigade.SelectedValue = getbyICard.BrigadeID.ToString();
             }
             else
             {
@@ -1067,6 +1118,7 @@ namespace TransitCamp.Admin
                 ddlDiv.SelectedValue = "";
                 ddlHQ.SelectedValue = "";
                 ddlUnit.SelectedValue = "";
+                ddlBrigade.SelectedValue = "";
             }
             TextBox tbox = this.txtName.FindControl("txtArmyNo") as TextBox;
             if (tbox != null)
@@ -1113,6 +1165,7 @@ namespace TransitCamp.Admin
                     ddlDiv.SelectedValue = data.DivID.ToString();
                     ddlHQ.SelectedValue = data.HQID.ToString();
                     ddlCity.SelectedValue = data.CityID.ToString();
+                    ddlBrigade.SelectedValue = data.BrigadeID.ToString();
                 }
             }
             else
@@ -1166,13 +1219,30 @@ namespace TransitCamp.Admin
                         }
                     }
                 }
+
+                else if (JC.ToLower().Contains("off") == true)
+                {
+                    if (catids != null)
+                    {
+                        foreach (var catres in catids)
+                        {
+                            if (catres.CategoryName.ToLower().Contains("off"))
+                            {
+                                ddlCategory.SelectedValue = catres.ID.ToString();
+                                BindRankByCat();
+                                break;
+                            }
+                        }
+                    }
+                }
+
                 else
                 {
                     if (catids != null)
                     {
                         foreach (var catres in catids)
                         {
-                            if (catres.CategoryName.ToLower().Contains("other") || catres.CategoryName.ToLower().Contains("or"))
+                            if (catres.CategoryName.ToLower().Contains("off") || catres.CategoryName.ToLower().Contains("offr") || catres.CategoryName.ToLower().Contains("officer"))
                             {
                                 ddlCategory.SelectedValue = catres.ID.ToString();
                                 BindRankByCat();

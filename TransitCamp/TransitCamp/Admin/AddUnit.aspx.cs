@@ -25,6 +25,7 @@ namespace TransitCamp.Admin
                 BindCity();
                 BindHQ();
                 GetDetails();
+                BindBrigade();
             }
         }
 
@@ -64,6 +65,18 @@ namespace TransitCamp.Admin
             ddlCity.Items.Insert(0, new ListItem("-- Select --", ""));
         }
 
+        //bind Brigade
+        protected void BindBrigade()
+        {
+            divisionServices = new DivisionServices(new TCContext());
+            var getlist = divisionServices.GetBrigDetails();
+            ddlBrigade.DataSource = getlist;
+            ddlBrigade.DataValueField = "Id";
+            ddlBrigade.DataTextField = "Name";
+            ddlBrigade.DataBind();
+            ddlBrigade.Items.Insert(0, new ListItem("-- Select --", ""));
+        }
+
         protected void GetDetails()
         {
             Int32 id = Convert.ToInt32(Request.QueryString["UnitID"]);
@@ -75,6 +88,7 @@ namespace TransitCamp.Admin
                 ddlHQ.SelectedValue = getdetail.HQID.ToString();
                 ddlDiv.SelectedValue = getdetail.DivID.ToString();
                 ddlCity.SelectedValue = getdetail.CityID.ToString();
+                ddlBrigade.SelectedValue = getdetail.BrigadeID.ToString();
                 btnUpdate.Visible = true;
                 btnSave.Visible = false;
             }
@@ -82,7 +96,7 @@ namespace TransitCamp.Admin
 
         protected void InsertUpdate()
         {
-            if (txtUnit.Text == "" || ddlDiv.SelectedValue.ToString() == "" || ddlHQ.SelectedValue.ToString() == "")
+            if (txtUnit.Text == "" || ddlDiv.SelectedValue.ToString() == "" || ddlHQ.SelectedValue.ToString() == "" || ddlBrigade.SelectedValue.ToString() == "")
             {
                 lblError.Visible = true;
                 lblError.Text = "Fill All Fields.";
@@ -105,6 +119,7 @@ namespace TransitCamp.Admin
                     info.HQID = Convert.ToInt64(ddlHQ.SelectedValue);
                     info.DivID = Convert.ToInt64(ddlDiv.SelectedValue);
                     info.CityID = Convert.ToInt64(ddlCity.SelectedValue);
+                    info.BrigadeID = Convert.ToInt64(ddlBrigade.SelectedValue);
                     if (id != 0)
                     {
                         info.ID = Convert.ToInt32(Request.QueryString["UnitID"]);

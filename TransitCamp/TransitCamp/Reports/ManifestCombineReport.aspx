@@ -163,7 +163,7 @@
                         <div class="declare">
                             Certified that the baggage of passenger/Army load list in the manifest have been checked by the undersigned and there is no such item the baggage or on the person which can be used sabotage/hijacking of aircraft
                         </div>
-                        <div runat="server" id="divTbl">
+                        <%--<div runat="server" id="divTbl">
                             <table class="table tbtblnc">
                                 <tr class="total">
                                     <td>Officer</td>
@@ -188,9 +188,9 @@
                                 </tr>
 
                             </table>
-                        </div>
+                        </div>--%>
                         <div class="sign">
-                            <span>Sign Of FLT NCO</span>
+                            <span>INT NCO</span>
                             <br />
                             <br />
                             <br />
@@ -198,7 +198,7 @@
 
                         </div>
                         <div class="sign">
-                            <span>Sign Of FLT JCO</span>
+                            <span>Sign Of FLT RXN HAV</span>
                             <br />
                             <br />
                             <br />
@@ -206,6 +206,40 @@
 
                         </div>
                         <div class="sign">
+                            <span>Sign Of MO/C</span>
+                            <br />
+                            <br />
+                            <br />
+                            Signature___________________
+
+                        </div>
+                        <div class="sign">
+                            <span>Sign Of AD OFFR</span>
+                            <br />
+                            <br />
+                            <br />
+                            Signature___________________
+
+                        </div>
+                        <div class="sign">
+                            <span>STATION C/O 56 APO</span>
+                            <br />
+                            <br />
+                            <br />
+                            Date: &nbsp;&nbsp;&nbsp;&nbsp;<asp:Label runat="server" ID="lblRptDate"></asp:Label>
+
+                        </div>
+                        <div class="sign">
+                            <span>Sign Of PILOT</span>
+                            <br />
+                            <br />
+                            <br />
+                            Signature___________________
+
+                        </div>
+
+
+                        <%--                        <div class="sign">
                             <span>Sign Of OC</span>
                             <br />
                             <br />
@@ -223,7 +257,7 @@
                                 <span class="signature-details">Date</span> :
                             <asp:Label runat="server" ID="lblRptDate"></asp:Label>
                             </div>
-                        </div>
+                        </div>--%>
                     </div>
                     <div>
                         <br />

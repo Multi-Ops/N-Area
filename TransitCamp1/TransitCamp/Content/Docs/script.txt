@@ -1,0 +1,5 @@
+var row = $("[id*=grdchat] tr:last-child").clone(true);
+        $("[id*=grdchat] tr").not($("[id*=grdchat] tr:first-child")).remove();
+        for (var i = 0; i < chatDatas.length; i++) {
+            for (var j = 0; j < chatDatas[i].length; j++) {
+                $("td", row).eq(j).html(chatDatas[i][j]);

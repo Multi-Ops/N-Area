@@ -110,6 +110,7 @@
                                                 <li><a class="dropdown-item" href="CampList">Camp List</a></li>
                                                 <li><a class="dropdown-item" href="MedicalStatusList">Medical Status List</a></li>
                                                 <li><a class="dropdown-item" href="OutlogicList">Outlogic List</a></li>
+                                                <li><a class="dropdown-item" href="BrigadeList">Brigade List</a></li>
                                             </ul>
                                         </div>
                                         <!-- col-megamenu.// -->

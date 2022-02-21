@@ -133,6 +133,9 @@
     <Reference Include="MySqlBackup, Version=2.3.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MySqlBackup.NET.2.3.4\lib\net452\MySqlBackup.dll</HintPath>
     </Reference>
+    <Reference Include="MySqlConnector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlConnector.2.0.0\lib\net471\MySqlConnector.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -156,8 +159,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.0\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.5.0.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
@@ -201,6 +204,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
@@ -220,6 +224,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\Brigade.aspx" />
+    <Content Include="Admin\BrigadeList.aspx" />
     <Content Include="Bookings\AddBillAttribute.aspx" />
     <Content Include="Bookings\AddBlock.aspx" />
     <Content Include="Bookings\AddBooking.aspx" />
@@ -227,6 +233,7 @@
     <Content Include="Bookings\BillAttributeList.aspx" />
     <Content Include="Bookings\BlockList.aspx" />
     <Content Include="Bookings\BookingList.aspx" />
+    <Content Include="Bookings\PrepareBill.aspx" />
     <Content Include="Bookings\RoomList.aspx" />
     <Content Include="Reports\ADDateRange.aspx" />
     <Content Include="Reports\ADFormationWiseSummary.aspx" />
@@ -548,6 +555,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\Brigade.aspx.cs">
+      <DependentUpon>Brigade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Brigade.aspx.designer.cs">
+      <DependentUpon>Brigade.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\BrigadeList.aspx.cs">
+      <DependentUpon>BrigadeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\BrigadeList.aspx.designer.cs">
+      <DependentUpon>BrigadeList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bookings\AddBillAttribute.aspx.cs">
       <DependentUpon>AddBillAttribute.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -596,6 +617,13 @@
     </Compile>
     <Compile Include="Bookings\BookingList.aspx.designer.cs">
       <DependentUpon>BookingList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\PrepareBill.aspx.cs">
+      <DependentUpon>PrepareBill.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bookings\PrepareBill.aspx.designer.cs">
+      <DependentUpon>PrepareBill.aspx</DependentUpon>
     </Compile>
     <Compile Include="Bookings\RoomList.aspx.cs">
       <DependentUpon>RoomList.aspx</DependentUpon>

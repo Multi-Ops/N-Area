@@ -169,6 +169,7 @@ namespace DataLayer
             return list;
         }
 
+
         //get by id
         public BllRoom GetIDRoom(Int64 id)
         {
@@ -457,6 +458,23 @@ namespace DataLayer
             Booking div = new Booking();
             var getdata = (from p in context.bookings
                            where p.Id == id
+                           select new Booking
+                           {
+                               Id = p.Id,
+                               RoomId = p.RoomId,
+                               ADId = p.ADId,
+                               BlockId = p.BlockId,
+                               CreatedOn = p.CreatedOn,
+                               UpdatedOn = p.UpdatedOn
+                           }).FirstOrDefault();
+            return getdata;
+        }
+
+        public Booking GetBookingByADID(Int64 id)
+        {
+            Booking div = new Booking();
+            var getdata = (from p in context.bookings
+                           where p.ADId == id
                            select new Booking
                            {
                                Id = p.Id,

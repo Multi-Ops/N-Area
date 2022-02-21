@@ -119,8 +119,8 @@
                             <asp:DropDownList runat="server" ID="ddlBulkAdd" CssClass="border-none" Width="120px" Height="25px">
                                 <asp:ListItem Value="1" Text="Normal"></asp:ListItem>
                                 <asp:ListItem Value="2" Text="Priority"></asp:ListItem>
-                                <asp:ListItem Value="3" Text="Load"></asp:ListItem>
-                                <asp:ListItem Value="4" Text="Reserve"></asp:ListItem>
+                                <%--         <asp:ListItem Value="3" Text="Load"></asp:ListItem>
+                                <asp:ListItem Value="4" Text="Reserve"></asp:ListItem>--%>
                             </asp:DropDownList>
                             <asp:Button runat="server" ID="btnAddBulk" Text="Finalize" CssClass="btn-primary border-none" Height="25px" Width="120px" OnClick="btnAddBulk_Click" />
                         </div>
@@ -154,17 +154,17 @@
                                     <div class="bulkMove">
                                         <asp:TextBox runat="server" ID="txtPriorityBulk" Placeholder="Digits" TextMode="Number" CssClass="border-none custom-bulk" Width="70px" Height="25px"></asp:TextBox>
                                         <asp:DropDownList runat="server" ID="ddlPriorityBulk" CssClass="border-none custom-bulk" Width="120px" Height="25px">
-                                            <asp:ListItem Value="1" Text="Load"></asp:ListItem>
+                                            <%--<asp:ListItem Value="1" Text="Load"></asp:ListItem>--%>
                                             <asp:ListItem Value="2" Text="Normal"></asp:ListItem>
-                                            <asp:ListItem Value="3" Text="Reserve"></asp:ListItem>
+                                            <%--<asp:ListItem Value="3" Text="Reserve"></asp:ListItem>--%>
                                         </asp:DropDownList>
                                         <asp:Button runat="server" ID="btnBulkMovePriority" Text="Bulk Move" CssClass="btn btn-block btn-primary border-none custom-bulk" Height="25px" Width="120px" OnClick="btnBulkMovePriority_Click" />
                                     </div>
                                     <hr />
 
-                                    <asp:Button runat="server" Text="Load" CssClass="btn btn-block btn-primary custom-select" ID="btnPrioLoad" OnClick="btnPrioLoad_Click" />
+                                    <%--<asp:Button runat="server" Text="Load" CssClass="btn btn-block btn-primary custom-select" ID="btnPrioLoad" OnClick="btnPrioLoad_Click" />--%>
                                     <asp:Button runat="server" Text="Normal" CssClass="btn btn-block btn-primary custom-select" ID="btnPrioNormal" OnClick="btnPrioNormal_Click" />
-                                    <asp:Button runat="server" Text="Reserve" CssClass="btn btn-block btn-primary custom-select" ID="btnPrioReserve" OnClick="btnPrioReserve_Click" />
+                                    <%--<asp:Button runat="server" Text="Reserve" CssClass="btn btn-block btn-primary custom-select" ID="btnPrioReserve" OnClick="btnPrioReserve_Click" />--%>
                                 </div>
                                 <button type="button" class="btn btn-block btn-primary custom-display">Move</button>
                             </div>
@@ -198,21 +198,21 @@
                                         <asp:TextBox runat="server" ID="txtBulkMove" Placeholder="Digits" TextMode="Number" CssClass="border-none custom-bulk" Width="70px" Height="25px"></asp:TextBox>
                                         <asp:DropDownList runat="server" ID="ddlBulkMoveFromGeneral" CssClass="border-none custom-bulk" Width="120px" Height="25px">
                                             <asp:ListItem Value="1" Text="Priority"></asp:ListItem>
-                                            <asp:ListItem Value="2" Text="Load"></asp:ListItem>
-                                            <asp:ListItem Value="3" Text="Reserve"></asp:ListItem>
+                                            <%--<asp:ListItem Value="2" Text="Load"></asp:ListItem>--%>
+                                            <%--<asp:ListItem Value="3" Text="Reserve"></asp:ListItem>--%>
                                         </asp:DropDownList>
                                         <asp:Button runat="server" ID="txtBUlkMoveFromGen" Text="Bulk Move" CssClass="btn btn-block btn-primary border-none custom-bulk" Height="25px" Width="120px" OnClick="txtBUlkMoveFromGen_Click" />
                                     </div>
                                     <hr />
 
                                     <asp:Button runat="server" Text="Priority" CssClass="btn btn-block btn-primary custom-select" ID="btnMovePriorityGen" OnClick="btnMovePriorityGen_Click" />
-                                    <asp:Button runat="server" Text="Load" CssClass="btn btn-block btn-primary custom-select" ID="btnMoveLoadGen" OnClick="btnMoveLoadGen_Click" />
-                                    <asp:Button runat="server" Text="Reserve" CssClass="btn btn-block btn-primary custom-select" ID="btnMoveReserveGen" OnClick="btnMoveReserveGen_Click" />
+<%--                                    <asp:Button runat="server" Text="Load" CssClass="btn btn-block btn-primary custom-select" ID="btnMoveLoadGen" OnClick="btnMoveLoadGen_Click" />
+                                    <asp:Button runat="server" Text="Reserve" CssClass="btn btn-block btn-primary custom-select" ID="btnMoveReserveGen" OnClick="btnMoveReserveGen_Click" />--%>
                                 </div>
                                 <button type="button" class="btn btn-block btn-primary custom-display">Move</button>
                             </div>
                         </div>
-                        <div class="pb-2 custom-right-nav leftborder">
+                        <div class="pb-2 custom-right-nav leftborder d-none">
                             <h1 class="mb-0 h5 text-center text-md-center mt-1 mb-1">Reserve</h1>
                             <asp:DropDownList runat="server" Visible="false" ID="ddlCityReserve" CssClass="form-control mb-1" AutoPostBack="true" OnSelectedIndexChanged="ddlCityReserve_SelectedIndexChanged">
                             </asp:DropDownList>
@@ -255,7 +255,7 @@
                                 <button type="button" class="btn btn-block btn-primary custom-display">Move</button>
                             </div>
                         </div>
-                        <div class="pb-2 custom-right-nav">
+                        <div class="pb-2 custom-right-nav d-none">
                             <h1 class="mb-0 h5 text-center text-md-center mt-1 mb-1">Load</h1>
                             <asp:HiddenField ID="hfCatReserve" runat="server" />
                             <asp:DropDownList runat="server" Visible="false" ID="ddlCityLoad" CssClass="form-control mb-1" AutoPostBack="true" OnSelectedIndexChanged="ddlLoad_SelectedIndexChanged">
@@ -468,7 +468,7 @@
                         </div>
                     </div>
 
-                    <div class="row" style="width: 72%; float: right;">
+                    <div class="row d-none" style="width: 72%; float: right;">
                         <div class="container">
                             <div id="printDivReserve" runat="server">
                                 <div class="grdHeading mt-2">

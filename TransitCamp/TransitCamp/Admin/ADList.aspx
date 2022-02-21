@@ -10,14 +10,14 @@
             <div class="table-container">
 
                 <div class="table-wrp">
-                    <h3 class="mt-5">AD Entry List</h3>
+                    <h3 class="mt-5">Entry List</h3>
                     <div class="float-left pt-4 pl-1"><a href="ADEntery"><b>Add</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADList"><b>AD List</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADListReserve"><b>Reserve</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADListPriorityWise"><b>Priority</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADListOnTempHold"><b>CANCEL AD LIST</b></a></div>
+                    <div class="float-left pt-4 pl-4"><a href="ADList"><b>List</b></a></div>
+                    <%--<div class="float-left pt-4 pl-4"><a href="ADListReserve"><b>Reserve</b></a></div>--%>
+                    <%--<div class="float-left pt-4 pl-4"><a href="ADListPriorityWise"><b>Priority</b></a></div>--%>
+                    <div class="float-left pt-4 pl-4"><a href="ADListOnTempHold"><b>CANCEL LIST</b></a></div>
                     <div class="float-left pt-4 pl-4"><a href="ADOnHoldStatusList"><b>On Hold Status</b></a></div>
-                    <div class="float-left pt-4 pl-4"><a href="ADIsLoadList"><b>Load</b></a></div>
+                    <%--<div class="float-left pt-4 pl-4"><a href="ADIsLoadList"><b>Load</b></a></div>--%>
 
 
                     <div class="float-right w-25 pr-1">
@@ -113,23 +113,26 @@
                                 <asp:TemplateField HeaderText="Action" ItemStyle-Width="15%">
                                     <ItemTemplate>
                                         <span>
-                                            <asp:Button ID="EditButton" runat="server" CssClass="btn btn-primary grid-btn" CommandName="Edit" Text="Edit" />
+                                            <asp:Button ID="EditButton" runat="server" CssClass="btn btn-primary grid-btn" Visible='<%#Eval("CheckOutDate") == null ? true:false %>' CommandName="Edit" Text="Edit" />
                                         </span>
                                         <%--             <span>
                                             <asp:Button ID="DeleteButton" runat="server" CssClass="btn btn-primary grid-btn" CommandName="Delete" OnClientClick="return confirm('Do you want to delete this entry?');" Text="Delete" />
                                         </span>--%>
-                                        <span>
-                                            <asp:Button ID="Reserve" runat="server" CssClass="btn btn-primary grid-btn" CommandName="Reserve" Text="Reserve" />
+                                        <%--                                        <span>
+                                            <asp:Button ID="Reserve" runat="server" CssClass="btn btn-primary grid-btn" Visible='<%#Eval("CheckOutDate") == null ? true:false %>' CommandName="Reserve" Text="Reserve" />
                                         </span>
                                         <span>
-                                            <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary grid-btn" CommandName="Load" Text="Load" />
+                                            <asp:Button ID="Button1" runat="server" CssClass="btn btn-primary grid-btn" Visible='<%#Eval("CheckOutDate") == null ? true:false %>' CommandName="Load" Text="Load" />
                                         </span>
-                                        <span>
-                                            <asp:Button ID="btnChkOut" runat="server" CssClass="btn btn-primary grid-btn" Visible='<%#Eval("CheckOutDate") == null ? true:false %>' CommandName="Checkout" Text="Checkout" />
+                                        <span>--%>
+                                        <asp:Button ID="btnChkOut" runat="server" CssClass="btn btn-primary grid-btn" Visible='<%#Eval("CheckOutDate") == null ? true:false %>' CommandName="Checkout" Text="Checkout" />
                                         </span>
                                         <span>
                                             <asp:Button ID="btnPrintBill" runat="server" CssClass="btn btn-primary grid-btn" Visible='<%#Eval("CheckOutDate") != null ? true:false %>' CommandName="PrintBill" Text="PrintBill" />
                                         </span>
+                                        <%--     <span>
+                                            <asp:Button ID="btnCancelChkOut" runat="server" CssClass="btn btn-primary grid-btn" Visible='<%#Eval("CheckOutDate") != null ? true:false %>' CommandName="CancelCheckOut" Text="C/O CXL" />
+                                        </span>--%>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
