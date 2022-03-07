@@ -21,6 +21,7 @@
             float: right;
             text-align: left;
             color: #198419;
+            display: none;
         }
 
         .chosen-container-single .chosen-single span {
@@ -71,7 +72,7 @@
                                                 <asp:HiddenField runat="server" ID="hfID" />
                                                 <%--<label for="email">Category</label>--%>
                                                 <span class="icon-arrange custom-ddl">
-                                                    <asp:DropDownList runat="server" ID="ddlCategory" AutoPostBack="true" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged" CssClass="form-control border-none">
+                                                    <asp:DropDownList runat="server" ID="ddlCategory" AutoPostBack="true" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged" CssClass="form-control border-none" Visible="false">
                                                     </asp:DropDownList>
                                                 </span>
                                                 <div class="custom-label">
@@ -272,15 +273,15 @@
                                     <asp:Label ID="lblError" runat="server" Visible="false" ForeColor="Red" Font-Bold="true"></asp:Label>
 
                                     <div class="d-flex justify-content-between align-items-top mb-3 pl-2 pr-2">
-                                        <asp:CheckBox For="email" ID="chkTemporaryHold" runat="server" CssClass="CheckBox mt-4" Text="Is Cancel" OnClick="modelpopup();" />
+                                        <asp:CheckBox For="email" ID="chkTemporaryHold" runat="server" CssClass="CheckBox mt-4" Text="Delete" OnClick="modelpopup();" />
                                         <asp:CheckBox For="email" ID="chkIsFly" runat="server" CssClass="CheckBox mt-4" Text="IsFly" Visible="false" />
                                         <asp:CheckBox For="email" ID="chkIsLoad" runat="server" CssClass="CheckBox mt-4" Text="IsLoad" Visible="false" />
-                                        <asp:CheckBox For="email" ID="chkOnHoldStatus" runat="server" CssClass="CheckBox mt-4" Text="On Hold Status" OnClick="modelpopupOnHold();" />
+                                        <asp:CheckBox For="email" ID="chkOnHoldStatus" runat="server" CssClass="CheckBox mt-4" Text="On Hold Status" OnClick="modelpopupOnHold();" Visible="false" />
                                         <span id="prio">
-                                            <input type="checkbox" id="chkIsPriority" class="CheckBox mt-4" onclick="ShowHideDiv(this)" runat="server" />
-                                            <p class="mt-4" style="font-weight: 600; margin-bottom: .5rem; float: left">
+                                            <input type="checkbox" id="chkIsPriority" class="CheckBox mt-4" onclick="ShowHideDiv(this)" runat="server" visible="false" />
+                                            <%--    <p class="mt-4 d-d-none" style="font-weight: 600; margin-bottom: .5rem; float: left">
                                                 Priority
-                                            </p>
+                                            </p>--%>
                                         </span>
                                         <label id="lblTemHold">On Temporary Hold.</label>
                                     </div>

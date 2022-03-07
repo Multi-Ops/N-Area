@@ -15,7 +15,7 @@
         }
 
         .custom-right-nav {
-            width: 50% !important;
+            width: 100% !important;
             margin: 15px 0 0 0 !important;
         }
 
@@ -125,8 +125,8 @@
                             <asp:Button runat="server" ID="btnAddBulk" Text="Finalize" CssClass="btn-primary border-none" Height="25px" Width="120px" OnClick="btnAddBulk_Click" />
                         </div>
                     </div>
-                    <div id="divRptrADNo" runat="server" class="mr-2 custom-ad bg-white row float-left form-bg-image d-flex align-items-center mb-4 mb-lg-0 bg-white shadow-soft border rounded border-light">
-                        <div class="custom-right-nav leftborder">
+                    <div id="divRptrADNo" runat="server" class="mr-2 w-25 custom-ad bg-white row float-left form-bg-image d-flex align-items-center mb-4 mb-lg-0 bg-white shadow-soft border rounded border-light">
+                        <div class="custom-right-nav leftborder d-none">
                             <h1 class="mb-0 h5 text-center text-md-center mt-1 mb-1">Priority</h1>
                             <asp:DropDownList runat="server" ID="ddlCityPriority" CssClass="form-control mb-1" AutoPostBack="true" OnSelectedIndexChanged="ddlCityPriority_SelectedIndexChanged" Visible="false">
                             </asp:DropDownList>
@@ -184,7 +184,7 @@
                                                 <li class="li-list float-left"><a class="search-list float-left" id='<%# Eval("ID") %>'>
                                                     <asp:HiddenField runat="server" ID="hfPriorityID" Value='<%# Eval("ID") %>' />
                                                     <asp:CheckBox runat="server" ID='chkIDGeneral' CssClass="form-control border-none float-left chkAD" />
-                                                    <div class="ml-3 pl-2 float-left"><%# Eval("ADNO") %></div>
+                                                    <div class="ml-3 pl-2 float-left"><%# Eval("Name") %></div>
                                                 </a></li>
                                             </label>
                                         </ItemTemplate>
@@ -206,7 +206,7 @@
                                     <hr />
 
                                     <asp:Button runat="server" Text="Priority" CssClass="btn btn-block btn-primary custom-select" ID="btnMovePriorityGen" OnClick="btnMovePriorityGen_Click" />
-<%--                                    <asp:Button runat="server" Text="Load" CssClass="btn btn-block btn-primary custom-select" ID="btnMoveLoadGen" OnClick="btnMoveLoadGen_Click" />
+                                    <%--                                    <asp:Button runat="server" Text="Load" CssClass="btn btn-block btn-primary custom-select" ID="btnMoveLoadGen" OnClick="btnMoveLoadGen_Click" />
                                     <asp:Button runat="server" Text="Reserve" CssClass="btn btn-block btn-primary custom-select" ID="btnMoveReserveGen" OnClick="btnMoveReserveGen_Click" />--%>
                                 </div>
                                 <button type="button" class="btn btn-block btn-primary custom-display">Move</button>
@@ -323,21 +323,21 @@
                                             </span>
                                             <a style="font-size: 12px; color: rgb(46 54 80 / 90%); margin-left: 5px" href="TransportDetails">Add Transport Details</a>
                                         </div>
-                                        <div class="col">
+                                        <div class="col d-none">
                                             <label for="email">Transport Type</label>
                                             <span class="icon-arrange">
                                                 <asp:DropDownList runat="server" ID="ddlTransportType" CssClass="form-control border-none" Enabled="false"></asp:DropDownList>
                                             </span>
                                         </div>
-
-                                    </div>
-                                    <div class="row mt-4">
                                         <div class="col">
                                             <label for="email">City</label>
                                             <span class="icon-arrange">
                                                 <asp:DropDownList runat="server" ID="ddlCity" CssClass="form-control border-none" Enabled="false"></asp:DropDownList>
                                             </span>
                                         </div>
+                                    </div>
+                                    <div class="row mt-4">
+
                                         <div class="col">
                                             <label for="email">Date</label>
                                             <span class="icon-arrange">
@@ -355,22 +355,23 @@
                                                 </asp:DropDownList>
                                             </span>
                                         </div>
-                                    </div>
-                                    <div class="row mt-4 mb-3">
-
                                         <div class="col">
                                             <label for="email">No Of Seats</label>
                                             <span class="icon-arrange">
                                                 <asp:TextBox runat="server" Enabled="false" ID="txtNoOfSeats" CssClass="form-control border-none" placeholder="0"></asp:TextBox>
                                             </span>
                                         </div>
-                                        <div class="col">
+                                    </div>
+                                    <div class="row mt-4 mb-3">
+
+
+                                        <div class="col d-none">
                                             <label for="email">Prior Seats</label>
                                             <span class="icon-arrange">
                                                 <asp:TextBox runat="server" Enabled="false" ID="txtPrioritySeats" CssClass="form-control border-none" placeholder="0"></asp:TextBox>
                                             </span>
                                         </div>
-                                        <div class="col">
+                                        <div class="col d-none">
                                             <label for="email">Load Seats</label>
                                             <span class="icon-arrange">
                                                 <asp:TextBox runat="server" Enabled="false" ID="txtLoad" CssClass="form-control border-none" placeholder="0"></asp:TextBox>

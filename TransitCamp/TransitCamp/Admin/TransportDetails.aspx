@@ -78,7 +78,7 @@
                                         </div>
                                     </div>
                                     <div class="row mt-4">
-                                        <div class="col">
+                                        <div class="col d-none">
                                             <label for="email">Priority Seats</label>
                                             <span class="icon-arrange">
                                                 <asp:TextBox runat="server" AutoPostBack="true" OnTextChanged="txtPrioritySeats_TextChanged" Display="Dynamic" ID="txtPrioritySeats" CssClass="form-control border-none" placeholder="Priority Seats"></asp:TextBox>
@@ -89,7 +89,7 @@
                                                 ValidationExpression="\d+">
                                             </asp:RegularExpressionValidator>
                                         </div>
-                                        <div class="col">
+                                        <div class="col d-none">
                                             <label for="email">Load</label>
                                             <span class="icon-arrange">
                                                 <asp:TextBox Display="Dynamic" runat="server" ID="txtLoad" CssClass="form-control border-none" placeholder="Load Seats" AutoPostBack="true" OnTextChanged="txtLoad_TextChanged"></asp:TextBox>
@@ -101,7 +101,7 @@
                                                 ValidationExpression="\d+">
                                             </asp:RegularExpressionValidator>
                                         </div>
-                                        <div class="col">
+                                        <div class="col d-none">
                                             <label for="email">No Of Seats</label>
                                             <span class="icon-arrange">
                                                 <asp:TextBox Display="Dynamic" runat="server" Enabled="false" ID="txtNoOfSeats" CssClass="form-control border-none" placeholder="No Of Seats"></asp:TextBox>

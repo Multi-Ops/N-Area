@@ -67,8 +67,8 @@
                             </div>--%>
 
                             <div class="d-flex justify-content-between align-items-top mb-3">
-                                <asp:CheckBox For="email" ID="chkISFly" runat="server" CssClass="CheckBox mt-4" Text="Is Fly" />
-                                <asp:CheckBox For="email" ID="chkIsLRC" runat="server" CssClass="CheckBox mt-4" Text="Is LRC" />
+                                <asp:CheckBox For="email" ID="chkISFly" runat="server" CssClass="CheckBox mt-4" Text="Will Fly" />
+                                <asp:CheckBox For="email" ID="chkIsLRC" runat="server" CssClass="CheckBox mt-4" Text="Has LRC" />
                                 <%--<asp:CheckBox For="email" ID="chkIsShare" runat="server" CssClass="CheckBox mt-4" Text="Is Share" />--%>
 
                                 <asp:Label ID="lblError" runat="server" Visible="false" ForeColor="Red"></asp:Label>
